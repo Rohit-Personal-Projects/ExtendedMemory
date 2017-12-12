@@ -4,8 +4,9 @@
         <Entry x:Name="txtEntry"
                Placeholder="Type here..." />
         
-        <Label x:Name="lblDisplay"
-               Text="display" />
+        <DatePicker x:Name="date" />
+
+        <TimePicker x:Name="time" />
         
         <Button Text="Submit"
                 Clicked="OnButtonClicked" />

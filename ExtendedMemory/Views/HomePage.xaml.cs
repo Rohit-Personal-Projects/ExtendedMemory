@@ -9,18 +9,24 @@ namespace ExtendedMemory.Views
         public HomePage()
         {
             InitializeComponent();
+            time.Time = DateTime.Now.TimeOfDay;
         }
 
-        void OnButtonClicked(object sender, EventArgs args)
+        async void OnButtonClicked(object sender, EventArgs args)
         {
             Button button = (Button)sender;
 
-            lblDisplay.Text = txtEntry.Text;
+            if (String.IsNullOrWhiteSpace(txtEntry.Text))
+            {
+                await DisplayAlert("Enter Text", "Please enter some text", "OK");
+                return;
+            }
 
             // /Users/rohit/Library/Developer/CoreSimulator/Devices/45163EF8-B7EB-4321-877C-F8CAA9B5D484/data/Containers/Data/Application/77BFD79E-8A35-436C-B8F2-1E5CB1D047B1/Documents
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             string filePath = Path.Combine(path, "out.txt");
-            File.AppendAllText(filePath, $"{txtEntry.Text}#{DateTime.Now}#\n");
+
+            File.AppendAllText(filePath, $"{txtEntry.Text}#{date.Date + time.Time}\n");
 
             //testing start
             string text = File.ReadAllText(filePath);
