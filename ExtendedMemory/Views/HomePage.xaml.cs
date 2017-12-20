@@ -1,15 +1,20 @@
-﻿using System;
+﻿using ExtendedMemory.Models;
+using System;
 using System.IO;
 using Xamarin.Forms;
+using ExtendedMemory.Helpers;
 
 namespace ExtendedMemory.Views
 {
     public partial class HomePage : ContentPage
     {
+        Location userLocation;
+
         public HomePage()
         {
             InitializeComponent();
             time.Time = DateTime.Now.TimeOfDay;
+            userLocation = DependencyService.Get<IGetLocation>().GetUserLocation();
         }
 
         async void OnButtonClicked(object sender, EventArgs args)
@@ -22,16 +27,38 @@ namespace ExtendedMemory.Views
                 return;
             }
 
+            Console.WriteLine(userLocation.City);
+
+            //Location userLocation = IGetLocation();
+
+            //if (!CLLocationManager.LocationServicesEnabled)
+            //{
+            //    await DisplayAlert("Enable Location", "", "OK");
+            //    return;
+            //}
+
+            //var locationManager = new CLLocationManager();
+            //Console.WriteLine(locationManager.Location.Coordinate);
+
+            /*var position = new Position(locationManager.Location.Coordinate.Latitude, locationManager.Location.Coordinate.Longitude);
+            var possibleAddresses = await geoCoder.GetAddressesForPositionAsync(position);
+            foreach (var address in possibleAddresses)
+            {
+                Console.WriteLine(address);
+            }*/
+
+
+
             // /Users/rohit/Library/Developer/CoreSimulator/Devices/45163EF8-B7EB-4321-877C-F8CAA9B5D484/data/Containers/Data/Application/77BFD79E-8A35-436C-B8F2-1E5CB1D047B1/Documents
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             string filePath = Path.Combine(path, "out.txt");
 
             File.AppendAllText(filePath, $"{txtEntry.Text}#{date.Date + time.Time}\n");
 
-            //testing start
-            string text = File.ReadAllText(filePath);
-            Console.WriteLine(text);
-            //testing end
+
+            //string text = File.ReadAllText(filePath);
+            //Console.WriteLine(text);
+
         }
     }
 }
