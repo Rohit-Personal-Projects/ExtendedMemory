@@ -1,6 +1,7 @@
 ﻿using ExtendedMemory.Models;
 using ExtendedMemory.Helpers;
 using ExtendedMemory.Android.Helpers;
+using System.Threading.Tasks;
 
 [assembly: Xamarin.Forms.Dependency(typeof(GetLocation_Android))]
 namespace ExtendedMemory.Android.Helpers
@@ -9,12 +10,13 @@ namespace ExtendedMemory.Android.Helpers
     {
         public GetLocation_Android() {}
 
-        public Location GetUserLocation()
+        public Task<Location> GetUserLocation()
         {
-            return new Location
-            {
-                City = "Android Bloo"
-            };
+            return null;
+            //return new Location
+            //{
+            //    City = "Android Bloo"
+            //};
         }
     }
 }

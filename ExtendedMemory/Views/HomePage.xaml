@@ -8,6 +8,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="100" />
             <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
             <RowDefinition Height="100" />
         </Grid.RowDefinitions>
 
@@ -23,11 +25,24 @@
 
         <DatePicker Grid.Row="1" Grid.Column="0"
                     x:Name="date" />
-
         <TimePicker Grid.Row="1" Grid.Column="1"
                     x:Name="time" />
 
-        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+        <Entry Grid.Row="2" Grid.Column="0"
+               x:Name="entryCity"
+               Placeholder="City" 
+               HorizontalTextAlignment="Center" />
+        <Entry Grid.Row="2" Grid.Column="1"
+               x:Name="entryState"
+               Placeholder="State" 
+               HorizontalTextAlignment="Center" />
+
+        <Entry Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+               x:Name="entryCountry"
+               Placeholder="Country" 
+               HorizontalTextAlignment="Center" />
+
+        <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
                 Text="Submit"
                 Clicked="OnButtonClicked"/>
 
