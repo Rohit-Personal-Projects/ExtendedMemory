@@ -4,19 +4,50 @@ using System.IO;
 using Xamarin.Forms;
 using ExtendedMemory.Helpers;
 using Xamarin.Forms.Maps;
+using System.Threading.Tasks;
 
 namespace ExtendedMemory.Views
 {
     public partial class HomePage : ContentPage
     {
-        Location userLocation;
-        Geocoder geoCoder;
+        //Location userLocation;
+        //Geocoder geoCoder;
+
+        void UpdateAddress()
+        {
+            //DependencyService.Get<IGetLocation>().GetUserLocation(entryCity, entryState, entryCountry);
+            //Location userLocation = DependencyService.Get<IGetLocation>().GetUserLocation(entryCity, entryState, entryCountry);
+            //if (userLocation != null)
+            //{
+            //    if (!String.IsNullOrWhiteSpace(userLocation.City) && !String.Equals(entryCity.Text, "City"))
+            //    {
+            //        entryCity.Text = userLocation.City;
+            //    }
+            //    if (!String.IsNullOrWhiteSpace(userLocation.State) && !String.Equals(entryState.Text, "State"))
+            //    {
+            //        entryState.Text = userLocation.State;
+            //    }
+            //    if (!String.IsNullOrWhiteSpace(userLocation.Country) && !String.Equals(entryCountry.Text, "Country"))
+            //    {
+            //        entryCountry.Text = userLocation.Country;
+            //    }
+            //}
+        }
 
         public HomePage()
         {
             InitializeComponent();
             time.Time = DateTime.Now.TimeOfDay;
-            geoCoder = new Geocoder();
+
+            Task.Run(async () =>
+            {
+                await DependencyService.Get<IGetLocation>().GetUserLocation(entryCity, entryState, entryCountry);
+            });
+
+            //UpdateAddress();
+            //DependencyService.Get<IGetLocation>().GetUserLocation(entryCity, entryState, entryCountry);
+
+            //geoCoder = new Geocoder();
         }
 
         async void OnButtonClicked(object sender, EventArgs args)
@@ -31,18 +62,18 @@ namespace ExtendedMemory.Views
                     return;
                 }
 
-                userLocation = DependencyService.Get<IGetLocation>().GetUserLocation();
+                //userLocation = DependencyService.Get<IGetLocation>().GetUserLocation().Result;
 
-                var position = new Position(39, -86);
-                Xamarin.FormsMaps.Init();
-                var possibleAddresses = await geoCoder.GetAddressesForPositionAsync(position);
-                foreach (var address in possibleAddresses)
-                {
-                    Console.WriteLine(address);
-                    txtEntry.Text = "boo " + address;
-                }
+                //var position = new Position(39, -86);
+                //Xamarin.FormsMaps.Init();
+                //var possibleAddresses = await geoCoder.GetAddressesForPositionAsync(position);
+                //foreach (var address in possibleAddresses)
+                //{
+                //    Console.WriteLine(address);
+                //    txtEntry.Text = "boo " + address;
+                //}
 
-                Console.WriteLine(userLocation.City);
+                //Console.WriteLine(userLocation.City);
 
                 //Location userLocation = IGetLocation();
 

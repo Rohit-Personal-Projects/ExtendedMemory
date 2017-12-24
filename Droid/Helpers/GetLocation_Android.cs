@@ -10,7 +10,7 @@ namespace ExtendedMemory.Android.Helpers
     {
         public GetLocation_Android() {}
 
-        public Task<Location> GetUserLocation()
+        public Location GetUserLocation()
         {
             return null;
             //return new Location

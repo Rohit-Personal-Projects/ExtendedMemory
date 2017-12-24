@@ -4,17 +4,18 @@ using ExtendedMemory.iOS.Helpers;
 using CoreLocation;
 using System;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 [assembly: Xamarin.Forms.Dependency(typeof(GetLocation_IOS))]
 namespace ExtendedMemory.iOS.Helpers
 {
     public class GetLocation_IOS : IGetLocation
     {
-        CLLocationManager locationManager;
+        //CLPlacemark[] userAddress = null;
+        //CLLocationManager locationManager;
 
         public GetLocation_IOS() {
-            locationManager = new CLLocationManager();
-            locationManager.RequestWhenInUseAuthorization();
+            
 
             //try
             //{
@@ -32,33 +33,47 @@ namespace ExtendedMemory.iOS.Helpers
         //    e.Locations[0].Coordinate.
         //}
 
-        public async Task<Location> GetUserLocation()
+        public void GetUserLocation(Entry entryCity, Entry entryState, Entry entryCountry)
         {
             try
             {
-                CLPlacemark[] userAddress = null;
-                locationManager.LocationsUpdated += (sender, e) =>
+                var locationManager = new CLLocationManager();
+                locationManager.RequestWhenInUseAuthorization();
+
+                var a = locationManager.LocationsUpdated += async (sender, e) =>
                 {
-                    
+                    foreach (var location in e.Locations)
+                    {
+                        var userAddress = await new CLGeocoder().ReverseGeocodeLocationAsync(location);
+                        foreach(var pp in userAddress) {
+                            entryCity.Text = pp.Locality;
+                            entryState.Text = pp.AdministrativeArea;
+                            entryCountry.Text = pp.Country;
+                        }
+
+                    }
+                    //locationManager.StopUpdatingLocation();();
                 };
 
                 locationManager.StartUpdatingLocation();
 
-                var geoCoder = new CLGeocoder();
+                //var geoCoder = new CLGeocoder();
 
-                Console.WriteLine("start");
+                //Console.WriteLine("start");
                 //var userAddress = await new CLGeocoder().ReverseGeocodeLocationAsync(locationManager.Location);
                 //foreach(var pp in userAddress) {
                 //    Console.WriteLine("name = " + pp.Name);
                 //}
 
-                return userAddress == null? null : new Location
-                {
-                    Street = userAddress[0].Name,
-                    City = userAddress[0].Locality,
-                    State = "in",
-                    Country = userAddress[0].Country
-                };
+                //return userAddress == null ? null : new Location
+                //{
+                //    Street = userAddress[0].Name,
+                //    City = userAddress[0].Locality,
+                //    State = "in",
+                //    Country = userAddress[0].Country,
+                //    Latitude = userAddress[0].Location.Coordinate.Latitude,
+                //    Longitude = userAddress[0].Location.Coordinate.Longitude
+                //};
 
 
                 //CLPlacemark p = null;
@@ -89,8 +104,8 @@ namespace ExtendedMemory.iOS.Helpers
                 ////};
                 //return null;
             }catch(Exception e){
-                Console.WriteLine(e);
-                return null;
+                Console.WriteLine("Bad : " + e);
+                return;
             }
 
 
