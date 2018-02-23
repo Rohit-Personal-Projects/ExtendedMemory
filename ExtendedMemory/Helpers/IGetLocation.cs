@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-using ExtendedMemory.Models;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace ExtendedMemory.Helpers
 {

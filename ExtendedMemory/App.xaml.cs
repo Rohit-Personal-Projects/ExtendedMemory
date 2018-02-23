@@ -1,6 +1,4 @@
-﻿using System;
-using ExtendedMemory.Views;
-
+﻿using ExtendedMemory.Views;
 using Xamarin.Forms;
 
 namespace ExtendedMemory
@@ -20,10 +18,8 @@ namespace ExtendedMemory
                 DependencyService.Register<CloudDataStore>();
 
             if (Device.RuntimePlatform == Device.iOS)
-                //MainPage = new MainPage();
                 MainPage = new HomePage();
             else
-                //MainPage = new NavigationPage(new MainPage());
                 MainPage = new NavigationPage(new HomePage());
         }
     }
