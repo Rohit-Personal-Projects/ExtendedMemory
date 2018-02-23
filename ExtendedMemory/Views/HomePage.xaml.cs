@@ -3,7 +3,7 @@ using System;
 using System.IO;
 using Xamarin.Forms;
 using ExtendedMemory.Helpers;
-using Xamarin.Forms.Maps;
+//using Xamarin.Forms.Maps;
 using System.Threading.Tasks;
 
 namespace ExtendedMemory.Views
@@ -39,10 +39,12 @@ namespace ExtendedMemory.Views
             InitializeComponent();
             time.Time = DateTime.Now.TimeOfDay;
 
-            Task.Run(async () =>
-            {
-                await DependencyService.Get<IGetLocation>().GetUserLocation(entryCity, entryState, entryCountry);
-            });
+            DependencyService.Get<IGetLocation>().GetUserLocation(entryCity, entryState, entryCountry);
+
+            //Task.Run(async () =>
+            //{
+            //    var location = await DependencyService.Get<IGetLocation>().GetUserLocation(entryCity, entryState, entryCountry);
+            //});
 
             //UpdateAddress();
             //DependencyService.Get<IGetLocation>().GetUserLocation(entryCity, entryState, entryCountry);
@@ -52,6 +54,7 @@ namespace ExtendedMemory.Views
 
         async void OnButtonClicked(object sender, EventArgs args)
         {
+            Console.WriteLine("but");
             try
             {
                 Button button = (Button)sender;
@@ -99,7 +102,9 @@ namespace ExtendedMemory.Views
                 string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
                 string filePath = Path.Combine(path, "out.txt");
 
-                File.AppendAllText(filePath, $"{txtEntry.Text}#{date.Date + time.Time}\n");
+                File.AppendAllText(filePath, $"{txtEntry.Text}#{date.Date + time.Time}#{entryCity.Text}#{entryState.Text}#{entryCountry.Text}\n");
+                Console.WriteLine($"{txtEntry.Text}#{date.Date + time.Time}#{entryCity.Text}#{entryState.Text}#{entryCountry.Text}\n");
+                Console.WriteLine(path);
 
 
                 //string text = File.ReadAllText(filePath);

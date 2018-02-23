@@ -12,7 +12,7 @@ namespace ExtendedMemory.iOS.Helpers
     public class GetLocation_IOS : IGetLocation
     {
         //CLPlacemark[] userAddress = null;
-        //CLLocationManager locationManager;
+        CLLocationManager locationManager;
 
         public GetLocation_IOS() {
             
@@ -21,7 +21,7 @@ namespace ExtendedMemory.iOS.Helpers
             //{
 
 
-            //    locationManager.RequestLocation();
+                
 
             //}catch(Exception ex){
             //    Console.WriteLine(ex.Message);
@@ -37,25 +37,41 @@ namespace ExtendedMemory.iOS.Helpers
         {
             try
             {
-                var locationManager = new CLLocationManager();
+                locationManager = new CLLocationManager();
                 locationManager.RequestWhenInUseAuthorization();
 
-                var a = locationManager.LocationsUpdated += async (sender, e) =>
+
+
+                //Device.BeginInvokeOnMainThread();
+
+                locationManager.LocationsUpdated += (sender, e) =>
                 {
-                    foreach (var location in e.Locations)
+                    // Last item in the array is the latest location
+                    var location = e.Locations[e.Locations.Length - 1];
+                    new CLGeocoder().ReverseGeocodeLocation(location, (placemarks, error) =>
                     {
-                        var userAddress = await new CLGeocoder().ReverseGeocodeLocationAsync(location);
-                        foreach(var pp in userAddress) {
+                        foreach (var pp in placemarks)
+                        {
                             entryCity.Text = pp.Locality;
                             entryState.Text = pp.AdministrativeArea;
                             entryCountry.Text = pp.Country;
                         }
+                    });
+                    //var userAddress = await new CLGeocoder().ReverseGeocodeLocationAsync(location);
 
-                    }
+                    //foreach (var pp in userAddress)
+                    //{
+                    //    entryCity.Text = pp.Locality;
+                    //    entryState.Text = pp.AdministrativeArea;
+                    //    entryCountry.Text = pp.Country;
+                    //}
+
                     //locationManager.StopUpdatingLocation();();
                 };
 
                 locationManager.StartUpdatingLocation();
+
+                Task.Delay(3000).Wait();
 
                 //var geoCoder = new CLGeocoder();
 
