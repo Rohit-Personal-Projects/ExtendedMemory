@@ -1,64 +1,46 @@
-﻿using ExtendedMemory.Models;
-using System;
+﻿using System;
 using System.IO;
-using Xamarin.Forms;
 using ExtendedMemory.Helpers;
+using Xamarin.Forms;
 
 namespace ExtendedMemory.Views
 {
     public partial class HomePage : ContentPage
     {
-        Location userLocation;
 
         public HomePage()
         {
             InitializeComponent();
+
             time.Time = DateTime.Now.TimeOfDay;
-            userLocation = DependencyService.Get<IGetLocation>().GetUserLocation();
+            DependencyService.Get<IGetLocation>().GetUserLocation(entryCity, entryState, entryCountry);
         }
 
         async void OnButtonClicked(object sender, EventArgs args)
         {
-            Button button = (Button)sender;
-
-            if (String.IsNullOrWhiteSpace(txtEntry.Text))
+            try
             {
-                await DisplayAlert("Enter Text", "Please enter some text", "OK");
-                return;
+                Button button = (Button)sender;
+
+                if (String.IsNullOrWhiteSpace(txtEntry.Text))
+                {
+                    await DisplayAlert("Enter Text", "Please enter some text", "OK");
+                    return;
+                }
+
+                // /Users/rohit/Library/Developer/CoreSimulator/Devices/45163EF8-B7EB-4321-877C-F8CAA9B5D484/data/Containers/Data/Application/77BFD79E-8A35-436C-B8F2-1E5CB1D047B1/Documents
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                string filePath = Path.Combine(path, "out.txt");
+
+                File.AppendAllText(filePath, $"{txtEntry.Text}#{date.Date + time.Time}#{entryCity.Text}#{entryState.Text}#{entryCountry.Text}\n");
+                Console.WriteLine($"{txtEntry.Text}#{date.Date + time.Time}#{entryCity.Text}#{entryState.Text}#{entryCountry.Text}\n");
+
+                //string text = File.ReadAllText(filePath);
             }
-
-            Console.WriteLine(userLocation.City);
-
-            //Location userLocation = IGetLocation();
-
-            //if (!CLLocationManager.LocationServicesEnabled)
-            //{
-            //    await DisplayAlert("Enable Location", "", "OK");
-            //    return;
-            //}
-
-            //var locationManager = new CLLocationManager();
-            //Console.WriteLine(locationManager.Location.Coordinate);
-
-            /*var position = new Position(locationManager.Location.Coordinate.Latitude, locationManager.Location.Coordinate.Longitude);
-            var possibleAddresses = await geoCoder.GetAddressesForPositionAsync(position);
-            foreach (var address in possibleAddresses)
+            catch (Exception e)
             {
-                Console.WriteLine(address);
-            }*/
-
-
-
-            // /Users/rohit/Library/Developer/CoreSimulator/Devices/45163EF8-B7EB-4321-877C-F8CAA9B5D484/data/Containers/Data/Application/77BFD79E-8A35-436C-B8F2-1E5CB1D047B1/Documents
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            string filePath = Path.Combine(path, "out.txt");
-
-            File.AppendAllText(filePath, $"{txtEntry.Text}#{date.Date + time.Time}\n");
-
-
-            //string text = File.ReadAllText(filePath);
-            //Console.WriteLine(text);
-
+                Console.WriteLine(e);
+            }
         }
     }
 }

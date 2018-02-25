@@ -1,9 +1,9 @@
-﻿using ExtendedMemory.Models;
+﻿using Xamarin.Forms;
 
 namespace ExtendedMemory.Helpers
 {
     public interface IGetLocation
     {
-        Location GetUserLocation();
+        void GetUserLocation(Entry entryCity, Entry entryState, Entry entryCountry);
     }
 }
