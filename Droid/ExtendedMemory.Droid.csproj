@@ -138,6 +138,9 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Helpers\GetLocation_Android.cs" />
+    <Compile Include="DataAccess\MemoryDatabase.cs" />
+    <Compile Include="SQLiteAsync.cs" />
+    <Compile Include="SQLite.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
@@ -151,6 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Helpers\" />
+    <Folder Include="DataAccess\" />
   </ItemGroup>
   <Import Project="..\ExtendedMemory\ExtendedMemory.projitems" Label="Shared" Condition="Exists('..\ExtendedMemory\ExtendedMemory.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

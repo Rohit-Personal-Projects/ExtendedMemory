@@ -38,6 +38,9 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Models\Location.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\IGetLocation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\IFileLocation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataAccess\IMemoryDatabase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Memory.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />
@@ -52,5 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
+    <Folder Include="$(MSBuildThisFileDirectory)DataAccess\" />
   </ItemGroup>
 </Project>

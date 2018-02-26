@@ -1,13 +1,13 @@
 ﻿using System;
-using System.IO;
+using ExtendedMemory.DataAccess;
 using ExtendedMemory.Helpers;
+using ExtendedMemory.Models;
 using Xamarin.Forms;
 
 namespace ExtendedMemory.Views
 {
     public partial class HomePage : ContentPage
     {
-
         public HomePage()
         {
             InitializeComponent();
@@ -28,14 +28,22 @@ namespace ExtendedMemory.Views
                     return;
                 }
 
-                // /Users/rohit/Library/Developer/CoreSimulator/Devices/45163EF8-B7EB-4321-877C-F8CAA9B5D484/data/Containers/Data/Application/77BFD79E-8A35-436C-B8F2-1E5CB1D047B1/Documents
-                string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-                string filePath = Path.Combine(path, "out.txt");
+                var memory = new Memory
+                {
+                    Text = txtEntry.Text,
+                    Date = date.Date + time.Time,
+                    City = entryCity.Text,
+                    State = entryState.Text,
+                    Country = entryCountry.Text
+                };
 
-                File.AppendAllText(filePath, $"{txtEntry.Text}#{date.Date + time.Time}#{entryCity.Text}#{entryState.Text}#{entryCountry.Text}\n");
-                Console.WriteLine($"{txtEntry.Text}#{date.Date + time.Time}#{entryCity.Text}#{entryState.Text}#{entryCountry.Text}\n");
+                Console.WriteLine(memory);
 
-                //string text = File.ReadAllText(filePath);
+                var memoryDB = DependencyService.Get<IMemoryDatabase>();
+                memoryDB.Save(memory);
+                //var test = memoryDB.Get();
+
+                await DisplayAlert("Success", "Memory saved.", "OK");
             }
             catch (Exception e)
             {
