@@ -144,6 +144,11 @@
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\appIcon_80.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\appIcon_120.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\appIcon_180.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\appIcon_40.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\appIcon_60.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\tab_about.png" />
@@ -176,7 +181,6 @@
   <ItemGroup>
     <Folder Include="Helpers\" />
     <Folder Include="DataAccess\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="..\ExtendedMemory\ExtendedMemory.projitems" Label="Shared" Condition="Exists('..\ExtendedMemory\ExtendedMemory.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
