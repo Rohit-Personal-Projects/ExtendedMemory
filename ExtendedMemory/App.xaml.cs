@@ -12,10 +12,11 @@ namespace ExtendedMemory
         {
             InitializeComponent();
 
-            if (UseMockDataStore)
-                DependencyService.Register<MockDataStore>();
-            else
-                DependencyService.Register<CloudDataStore>();
+            //if (UseMockDataStore)
+            //    DependencyService.Register<MockDataStore>();
+            //else
+                //DependencyService.Register<CloudDataStore>();
+
 
             if (Device.RuntimePlatform == Device.iOS)
                 MainPage = new HomePage();
