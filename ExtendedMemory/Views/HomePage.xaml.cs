@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using ExtendedMemory.DataAccess;
 using ExtendedMemory.Helpers;
 using ExtendedMemory.Models;
@@ -34,13 +35,15 @@ namespace ExtendedMemory.Views
                     Date = date.Date + time.Time,
                     City = entryCity.Text,
                     State = entryState.Text,
-                    Country = entryCountry.Text
+                    Country = entryCountry.Text,
+                    People = txtPeople.Text.Split(' ').ToList(),
+                    Tags = txtTags.Text.Split(' ').ToList(),
                 };
 
                 Console.WriteLine(memory);
 
-                var memoryDB = DependencyService.Get<IMemoryDatabase>();
-                memoryDB.Save(memory);
+                //var memoryDB = DependencyService.Get<IMemoryDatabase>();
+                //memoryDB.Save(memory);
                 //var test = memoryDB.Get();
 
                 await DisplayAlert("Success", "Memory saved.", "OK");
