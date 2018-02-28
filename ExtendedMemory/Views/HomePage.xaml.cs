@@ -1,14 +1,15 @@
-﻿    using System;
-    using System.Collections.Generic;
-    using Couchbase.Lite;
-    using ExtendedMemory.DataAccess;
-    using ExtendedMemory.Helpers;
-    using ExtendedMemory.Models;
-    using Xamarin.Forms;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Couchbase.Lite;
+using ExtendedMemory.DataAccess;
+using ExtendedMemory.Helpers;
+using ExtendedMemory.Models;
+using Xamarin.Forms;
 
-    namespace ExtendedMemory.Views
-    {
-        public partial class HomePage : ContentPage
+namespace ExtendedMemory.Views
+{
+    public partial class HomePage : ContentPage
         {
             public HomePage()
             {
@@ -30,7 +31,7 @@
                         return;
                     }
 
-                //Trial code for couchbase db Starts
+                    // Trial code for couchbase db Starts
                     /* This line is required for iOS only */
                     Couchbase.Lite.Storage.SystemSQLite.Plugin.Register();
 
@@ -69,7 +70,7 @@
                     push.Start();
                     pull.Start();
 
-                //Trial code for couchbase db Ends
+                    //Trial code for couchbase db Ends
 
                     var memory = new Memory
                     {
@@ -77,14 +78,18 @@
                         Date = date.Date + time.Time,
                         City = entryCity.Text,
                         State = entryState.Text,
-                        Country = entryCountry.Text
+                        Country = entryCountry.Text,
+                        People = txtPeople.Text.Split(' ').ToList(),
+                        Tags = txtTags.Text.Split(' ').ToList(),
                     };
 
                     Console.WriteLine(memory);
 
+                    /* Saving memory in SQLite
                     var memoryDB = DependencyService.Get<IMemoryDatabase>();
                     memoryDB.Save(memory);
-                    //var test = memoryDB.Get();
+                    var test = memoryDB.Get();
+                    */
 
                     await DisplayAlert("Success", "Memory saved.", "OK");
                 }

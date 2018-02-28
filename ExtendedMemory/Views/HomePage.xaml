@@ -7,6 +7,7 @@
     <Grid RowSpacing="40">
         <Grid.RowDefinitions>
             <RowDefinition Height="100" />
+            <RowDefinition Height="75" />
             <RowDefinition Height="50" />
             <RowDefinition Height="50" />
             <RowDefinition Height="50" />
@@ -23,26 +24,36 @@
                Placeholder="Type here..." 
                HorizontalTextAlignment="Center" />
 
-        <DatePicker Grid.Row="1" Grid.Column="0"
+        <Entry Grid.Row="1" Grid.Column="0"
+               x:Name="txtPeople"
+               Placeholder="With..." 
+               HorizontalTextAlignment="Center" />
+        <Entry Grid.Row="1" Grid.Column="1"
+               x:Name="txtTags"
+               Placeholder="Tags..." 
+               HorizontalTextAlignment="Center" />
+
+        
+        <DatePicker Grid.Row="2" Grid.Column="0"
                     x:Name="date" />
-        <TimePicker Grid.Row="1" Grid.Column="1"
+        <TimePicker Grid.Row="2" Grid.Column="1"
                     x:Name="time" />
 
-        <Entry Grid.Row="2" Grid.Column="0"
+        <Entry Grid.Row="3" Grid.Column="0"
                x:Name="entryCity"
                Placeholder="City" 
                HorizontalTextAlignment="Center" />
-        <Entry Grid.Row="2" Grid.Column="1"
+        <Entry Grid.Row="3" Grid.Column="1"
                x:Name="entryState"
                Placeholder="State" 
                HorizontalTextAlignment="Center" />
 
-        <Entry Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+        <Entry Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
                x:Name="entryCountry"
                Placeholder="Country" 
                HorizontalTextAlignment="Center" />
 
-        <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+        <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
                 Text="Submit"
                 Clicked="OnButtonClicked"/>
 
