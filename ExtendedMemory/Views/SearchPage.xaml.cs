@@ -15,17 +15,17 @@ namespace ExtendedMemory.Views
             //ddSearchByTag.Items = DataAccess.MemoryDatabase.Get(SearchType.Tag);
 
             //async possible when takin from the db?
-            ddSearchByPeople.Items.Add("");
+
             ddSearchByPeople.Items.Add("Niki");
             ddSearchByPeople.Items.Add("Sumit");
 
-            ddSearchByTag.Items.Add("");
             ddSearchByTag.Items.Add("Swim");
             ddSearchByTag.Items.Add("PS4");
 
             var dds = new Picker[] { ddSearchByPeople, ddSearchByTag, ddSearchByCity, ddSearchByState, ddSearchByCountry };
             foreach (var dd in dds)
             {
+                dd.Items.Add("");
                 dd.SelectedIndexChanged += (sender, e) => AppendToTextField(txtSearchByTag, dd.SelectedItem.ToString());
             }
         }

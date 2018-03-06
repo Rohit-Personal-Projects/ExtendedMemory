@@ -160,8 +160,6 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Helpers\GetLocation_Android.cs" />
     <Compile Include="DataAccess\MemoryDatabase.cs" />
-    <Compile Include="SQLiteAsync.cs" />
-    <Compile Include="SQLite.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
