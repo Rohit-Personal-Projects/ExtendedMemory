@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="ExtendedMemory.Views.SearchPage"
+             Title="SEARCH" >
+
+    <Grid RowSpacing="40" Margin="6">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Row 0 - Search by Memory -->
+        <Label Grid.Row="0" Grid.Column="0"
+               Text="Memory"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center" />
+        <Entry Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"
+               x:Name="txtSearchByMemory"
+               HorizontalTextAlignment="Center" />
+
+        <!-- Row 1 - Search by People -->
+        <Label Grid.Row="1" Grid.Column="0"
+               Text="People" 
+               HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+        <Entry Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+               x:Name="txtSearchByPeople"
+               HorizontalTextAlignment="Center" />
+        <Picker Grid.Row="1" Grid.Column="3"
+               x:Name="ddSearchByPeople" />
+
+        <!-- Row 2 - Search by Tag -->
+        <Label Grid.Row="2" Grid.Column="0"
+               Text="Tag" 
+               HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+        <Entry Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
+               x:Name="txtSearchByTag"
+               HorizontalTextAlignment="Center" />
+        <Picker Grid.Row="2" Grid.Column="3"
+               x:Name="ddSearchByTag" />
+
+        <!-- Row 3 - Search by Location -->
+        <Label Grid.Row="3" Grid.Column="0"
+               Text="Location" 
+               HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+        <Picker Grid.Row="3" Grid.Column="1"
+               x:Name="ddSearchByCity" />
+        <Picker Grid.Row="3" Grid.Column="2"
+               x:Name="ddSearchByState" />
+        <Picker Grid.Row="3" Grid.Column="3"
+               x:Name="ddSearchByCountry" />
+
+        <!-- Row 4 - Search by Date -->
+        <Label Grid.Row="4" Grid.Column="0"
+               Text="Date" 
+               HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+        <DatePicker Grid.Row="4" Grid.Column="1"
+                    x:Name="dtSearchByDateFrom" />
+        <Label Grid.Row="4" Grid.Column="2"
+               Text="-" 
+               HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+        <DatePicker Grid.Row="4" Grid.Column="3"
+                    x:Name="dtSearchByDateTo" />
+
+        <!-- Row 5 - Search by Time -->
+        <Label Grid.Row="5" Grid.Column="0"
+               Text="Time" 
+               HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+        <TimePicker Grid.Row="5" Grid.Column="1"
+                    x:Name="tmSearchByTimeFrom" />
+        <Label Grid.Row="5" Grid.Column="2"
+               Text="-" 
+               HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+        <TimePicker Grid.Row="5" Grid.Column="3"
+                    x:Name="tmSearchByTimeTo" />
+
+        <!-- Row 6 - Search Button -->
+        <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4"
+                Text="Search"
+                Clicked="SearchMemory" />
+
+    </Grid>
+</ContentPage>
