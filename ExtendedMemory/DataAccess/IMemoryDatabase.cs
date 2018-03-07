@@ -5,12 +5,12 @@ namespace ExtendedMemory.DataAccess
 {
     public interface IMemoryDatabase
     {
+        Response<int> Save(Memory memory);
+
         List<Memory> Get();
 
-        Memory Get(int id);
+        Memory Get(SearchType searchType);
 
-        int Save(Memory item);
-
-        int Delete(Memory item);
+        Response<int> Forget(Memory memory);
     }
 }

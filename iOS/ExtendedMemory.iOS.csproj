@@ -128,9 +128,6 @@
     <Reference Include="Couchbase.Lite.Storage.SystemSQLite">
       <HintPath>..\packages\Couchbase.Lite.Storage.SystemSQLite.1.4.1\lib\Xamarin.iOS10\Couchbase.Lite.Storage.SystemSQLite.dll</HintPath>
     </Reference>
-    <Reference Include="Stateless">
-      <HintPath>..\packages\Stateless.2.5.53.0\lib\portable-net40+sl50+win+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Stateless.dll</HintPath>
-    </Reference>
     <Reference Include="Couchbase.Lite">
       <HintPath>..\packages\Couchbase.Lite.1.4.1\lib\Xamarin.iOS10\Couchbase.Lite.dll</HintPath>
     </Reference>
@@ -139,6 +136,10 @@
     </Reference>
     <Reference Include="websocket-sharp">
       <HintPath>..\packages\Couchbase.Lite.1.4.1\lib\Xamarin.iOS10\websocket-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="Stateless">
+      <HintPath>..\packages\Stateless.4.0.0\lib\netstandard1.0\Stateless.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -165,8 +166,6 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Helpers\GetLocation_IOS.cs" />
-    <Compile Include="SQLiteAsync.cs" />
-    <Compile Include="SQLite.cs" />
     <Compile Include="DataAccess\MemoryDatabase.cs" />
     <Compile Include="Helpers\FileLocation.cs" />
   </ItemGroup>

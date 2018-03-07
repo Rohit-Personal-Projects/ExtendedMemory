@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System;
+using System.Collections.Generic;
 using ExtendedMemory.DataAccess;
-using ExtendedMemory.Helpers;
 using ExtendedMemory.Models;
-using SQLite;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(MemoryDatabase))]
@@ -11,40 +9,29 @@ namespace ExtendedMemory.DataAccess
 {
     public class MemoryDatabase : IMemoryDatabase
     {
-        static SQLiteConnection database;
-
-        public static SQLiteConnection Database
-        {
-            get
-            {
-                if (database == null)
-                {
-                    database = new SQLiteConnection(DependencyService.Get<IFileLocation>().GetLocalFilePath("MemoryDatabase.db3"));
-                }
-                return database;
-            }
-        }
-
         public MemoryDatabase()
         {
-            database = new SQLiteConnection(DependencyService.Get<IFileLocation>().GetLocalFilePath("MemoryDatabase.db3"));
-            database.CreateTable<Memory>();
+            // Create a singleton db object here?
         }
 
-        public int Save(Memory item)
+        public Response<int> Save(Memory memory)
         {
-            if (item.ID != 0)
-            {
-                return database.Update(item);
-            }
-
-            return database.Insert(item);
+            throw new NotImplementedException();
         }
 
-        public List<Memory> Get() => database.Table<Memory>().ToList();
+        public List<Memory> Get()
+        {
+            throw new NotImplementedException();
+        }
 
-        public Memory Get(int id) => database.Table<Memory>().Where(i => i.ID == id).FirstOrDefault();
+        public Memory Get(SearchType searchType)
+        {
+            throw new NotImplementedException();
+        }
 
-        public int Delete(Memory item) => database.Delete(item);
+        public Response<int> Forget(Memory memory)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

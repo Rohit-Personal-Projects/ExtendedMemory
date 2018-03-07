@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="ExtendedMemory.Views.SavePage"
+             Title="SAVE" >
+
+    <Grid RowSpacing="40">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="75" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Entry Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+               x:Name="txtEntry"
+               Placeholder="Type here..." 
+               HorizontalTextAlignment="Center" />
+
+        <Entry Grid.Row="1" Grid.Column="0"
+               x:Name="txtPeople"
+               Placeholder="With..." 
+               HorizontalTextAlignment="Center" />
+        <Entry Grid.Row="1" Grid.Column="1"
+               x:Name="txtTags"
+               Placeholder="Tags..." 
+               HorizontalTextAlignment="Center" />
+
+        
+        <DatePicker Grid.Row="2" Grid.Column="0"
+                    x:Name="date" />
+        <TimePicker Grid.Row="2" Grid.Column="1"
+                    x:Name="time" />
+
+        <Entry Grid.Row="3" Grid.Column="0"
+               x:Name="entryCity"
+               Placeholder="City" 
+               HorizontalTextAlignment="Center" />
+        <Entry Grid.Row="3" Grid.Column="1"
+               x:Name="entryState"
+               Placeholder="State" 
+               HorizontalTextAlignment="Center" />
+
+        <Entry Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+               x:Name="entryCountry"
+               Placeholder="Country" 
+               HorizontalTextAlignment="Center" />
+
+        <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+                Text="Submit"
+                Clicked="OnButtonClicked"/>
+
+    </Grid>
+</ContentPage>
