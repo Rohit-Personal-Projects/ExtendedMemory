@@ -14,7 +14,7 @@ namespace ExtendedMemory.DataAccess
             // Create a singleton db object here?
         }
 
-        public Response<int> Save(Memory memory)
+        public Response<string> Save(Memory memory)
         {
             throw new NotImplementedException();
         }
@@ -29,7 +29,7 @@ namespace ExtendedMemory.DataAccess
             throw new NotImplementedException();
         }
 
-        public Response<int> Forget(Memory memory)
+        public Response<string> Forget(Memory memory)
         {
             throw new NotImplementedException();
         }
