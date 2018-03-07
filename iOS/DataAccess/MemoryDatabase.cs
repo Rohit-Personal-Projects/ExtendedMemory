@@ -12,24 +12,22 @@ namespace ExtendedMemory.DataAccess
 {
     public class MemoryDatabase : IMemoryDatabase
     {
+        Manager manager;
+        Database database;
+
         public MemoryDatabase()
         {
-            // Create a singleton db object here?
+            // This line is required for iOS only
+            Couchbase.Lite.Storage.SystemSQLite.Plugin.Register();
+
+            manager = Manager.SharedInstance;
+            database = manager.GetDatabase("extendedmemory");
         }
 
         public Response<string> Save(Memory memory)
         {
-
-            // Move setup to constructor
-            /* This line is required for iOS only */
-            Couchbase.Lite.Storage.SystemSQLite.Plugin.Register();
-
-            /* Create a manager */
-            var manager = Manager.SharedInstance;
-
-            /* Create or open the database named app */
-            var database = manager.GetDatabase("extendedmemory");
-
+            var a = memory.ID.GetType();
+            var b = memory.GetType().GetProperties();
 
             var json = JsonConvert.SerializeObject(memory);
 
