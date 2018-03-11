@@ -6,7 +6,6 @@
       <File FileName="ExtendedMemory/Views/HomePage.xaml.cs" Line="1" Column="1" />
       <File FileName="iOS/DataAccess/MemoryDatabase.cs" Line="1" Column="1" />
       <File FileName="ExtendedMemory/Models/Memory.cs" Line="1" Column="1" />
-      <File FileName="ExtendedMemory Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
@@ -14,6 +13,6 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.ExtendedMemory.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.6758FA01-B455-4D2A-9A22-0EB18119409F" />
+  <MonoDevelop.Ide.ItemProperties.ExtendedMemory.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.F59CA3F2-53B2-48BA-B628-8ED9B55252BC" />
   <MultiItemStartupConfigurations />
 </Properties>

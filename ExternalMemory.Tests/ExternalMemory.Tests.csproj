@@ -98,5 +98,6 @@
     <Compile Include="UnitTestAppDelegate.cs" />
     <Compile Include="DataAccessAndHelpersTests.cs" />
   </ItemGroup>
+  <Import Project="..\ExtendedMemory\ExtendedMemory.projitems" Label="Shared" Condition="Exists('..\ExtendedMemory\ExtendedMemory.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
