@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using Couchbase.Lite;
 using ExtendedMemory.DataAccess;
 using ExtendedMemory.Models;
@@ -29,6 +30,7 @@ namespace ExtendedMemory.DataAccess
             }
 
             var document = database.CreateDocument();
+            //document.PutProperties(Memory.MemoryToDictionary(memory));
             document.PutProperties(properties);
 
             Console.WriteLine($"Document ID :: {document.Id}");
@@ -41,13 +43,13 @@ namespace ExtendedMemory.DataAccess
             };
         }
 
-        public Response<List<Memory>> Get()
+        public async Task<Response<List<Memory>>> Get()
         {
             var memories = new List<Memory>();
-            //make this run async
-            foreach (var memoryRecord in database.CreateAllDocumentsQuery().Run())
+            var memoriesFromDB = await database.CreateAllDocumentsQuery().RunAsync();
+            foreach (var memoryRecord in memoriesFromDB)
             {
-                memories.Add(new Memory(memoryRecord));
+                memories.Add(Memory.DictToMemory(memoryRecord));
             }
 
             return new Response<List<Memory>>

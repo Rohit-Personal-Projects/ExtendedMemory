@@ -22,26 +22,9 @@ namespace ExtendedMemory.Models
 
         public Memory() { }
 
-        //public static IDictionary<string, object> MemoryToDictionary(Memory memory)
-        //{
-        //    var dict = new Dictionary<string, object>();
-        //    foreach (PropertyDescriptor prop in TypeDescriptor.GetProperties(memory))
-        //    {
-        //        dict.Add(prop.Name, prop.GetValue(memory));
-        //    }
-
-        //    //var dict = new Dictionary<string, object>();
-        //    //foreach (var props in memory.GetType().GetProperties())
-        //    //{
-        //    //    dict.Add(props.Name, props.GetValue(memory));
-        //    //}
-        //    return dict;
-        //}
-
         public static Memory DictToMemory(QueryRow row)
         {
             var m = new Memory();
-
             Type type = typeof(Memory);
             var result = (Memory)Activator.CreateInstance(type);
             var dict = row.Document.UserProperties;
@@ -80,23 +63,6 @@ namespace ExtendedMemory.Models
             }
 
             return result;
-        }
-
-        public Memory(QueryRow row)
-        {
-            var m = new Memory();
-            var properties = new Dictionary<string, object>();
-            foreach (PropertyDescriptor x in TypeDescriptor.GetProperties(m))
-            {
-                properties.Add(x.Name, x.GetValue(row));
-            }
-            //var m2 = JsonConvert.DeserializeObject<Memory>(row.Document.UserProperties);
-
-            Text = row.Document.UserProperties[nameof(m.Text)]?.ToString();
-            //People = JsonConvert.DeserializeObject<List<string>>(row.Document.UserProperties[nameof(m.People)];
-            Tags = (List<string>) row.Document.UserProperties[nameof(m.Tags)];
-            DateTime = Convert.ToDateTime(row.Document.UserProperties[nameof(m.DateTime)]);
-            Location = (Location) row.Document.UserProperties[nameof(m.Location)];
         }
 
         public override string ToString()

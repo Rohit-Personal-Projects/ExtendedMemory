@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using ExtendedMemory.Models;
 
 namespace ExtendedMemory.DataAccess
@@ -7,7 +8,7 @@ namespace ExtendedMemory.DataAccess
     {
         Response<string> Save(Memory memory);
 
-        Response<List<Memory>> Get();
+        Task<Response<List<Memory>>> Get();
 
         Response<Memory> Get(SearchType searchType);
 
