@@ -1,21 +1,21 @@
 ﻿<Properties StartupConfiguration="{E9F5DE4C-CDA9-47EA-99D0-8CAAA9DAB05B}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ExtendedMemory/Models/SearchType.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ExtendedMemory/Models/Memory.cs">
     <Files>
-      <File FileName="iOS/Main.cs" Line="17" Column="1" />
-      <File FileName="ExtendedMemory/App.xaml.cs" Line="1" Column="1" />
-      <File FileName="ExtendedMemory/Models/Memory.cs" Line="1" Column="1" />
-      <File FileName="iOS/DataAccess/MemoryDatabase.cs" Line="57" Column="34" />
-      <File FileName="ExtendedMemory/Views/SavePage.xaml.cs" Line="35" Column="1" />
-      <File FileName="ExtendedMemory/Models/SearchType.cs" Line="11" Column="11" />
+      <File FileName="iOS/DataAccess/MemoryDatabase.cs" Line="33" Column="46" />
+      <File FileName="ExtendedMemory/Models/Memory.cs" Line="78" Column="1" />
+      <File FileName="ExtendedMemory/Views/SearchPage.xaml.cs" Line="61" Column="25" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/nikithachettiar/Documents/Rohit/ExtendedMemory/iOS/DataAccess/MemoryDatabase.cs" relfile="iOS/DataAccess/MemoryDatabase.cs" line="34" column="1" />
+      <Breakpoint file="/Users/rohit/Drive_Sync/Code/ExtendedMemory/ExtendedMemory/ExtendedMemory/Views/SearchPage.xaml.cs" relfile="ExtendedMemory/Views/SearchPage.xaml.cs" line="24" column="1" />
+      <Breakpoint file="/Users/rohit/Drive_Sync/Code/ExtendedMemory/ExtendedMemory/ExtendedMemory/Models/Memory.cs" relfile="ExtendedMemory/Models/Memory.cs" line="94" column="1" />
+      <Breakpoint file="/Users/rohit/Drive_Sync/Code/ExtendedMemory/ExtendedMemory/ExtendedMemory/Models/Memory.cs" relfile="ExtendedMemory/Models/Memory.cs" line="81" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.ExtendedMemory.Droid AndroidDesignerPreferredTheme="Theme.DeviceDefault.NoActionBar.Fullscreen" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.ExtendedMemory.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.6758FA01-B455-4D2A-9A22-0EB18119409F" />
+  <MonoDevelop.Ide.ItemProperties.ExtendedMemory.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.3A0C59C0-B9C1-4D54-B47A-4BFA58120CB4" />
   <MultiItemStartupConfigurations />
 </Properties>

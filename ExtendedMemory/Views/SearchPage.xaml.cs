@@ -1,4 +1,5 @@
 ﻿using System;
+using ExtendedMemory.DataAccess;
 using ExtendedMemory.Models;
 using Xamarin.Forms;
 
@@ -9,6 +10,10 @@ namespace ExtendedMemory.Views
         public SearchPage()
         {
             InitializeComponent();
+
+            var searchResponse = DependencyService.Get<IMemoryDatabase>().Get();
+
+            var a = searchResponse.Item;
 
             //load all the dopdowns - somethin like:
             //ddSearchByPeople.Items = DataAccess.MemoryDatabase.Get(SearchType.People);

@@ -7,9 +7,9 @@ namespace ExtendedMemory.DataAccess
     {
         Response<string> Save(Memory memory);
 
-        List<Memory> Get();
+        Response<List<Memory>> Get();
 
-        Memory Get(SearchType searchType);
+        Response<Memory> Get(SearchType searchType);
 
         Response<string> Forget(Memory memory);
     }

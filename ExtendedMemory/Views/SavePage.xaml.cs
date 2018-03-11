@@ -37,12 +37,13 @@ namespace ExtendedMemory.Views
                     Text = txtEntry.Text,
                     People = txtPeople.Text.Split(' ').ToList(),
                     Tags = txtTags.Text.Split(' ').ToList(),
-                    Location = new Location{
+                    DateTime = date.Date + time.Time,
+                    Location = new Location
+                    {
                         City = entryCity.Text,
                         State = entryState.Text,
                         Country = entryCountry.Text
-                    },
-                    DateTime = date.Date + time.Time,
+                    }
                 };
 
                 var saveResponse = DependencyService.Get<IMemoryDatabase>().Save(memory);
