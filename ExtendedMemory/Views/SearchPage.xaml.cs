@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using ExtendedMemory.DataAccess;
 using ExtendedMemory.Models;
@@ -50,6 +51,26 @@ namespace ExtendedMemory.Views
                 //    await DisplayAlert("Enter Text", "Please enter some text", "OK");
                 //    return;
                 //}
+
+                SearchParams obj = new SearchParams()
+                {
+                    FromDate = dtSearchByDateFrom,
+                    ToDate = dtSearchByDateTo,
+                    FromTime = tmSearchByTimeFrom,
+                    ToTime = tmSearchByTimeTo,
+                    Location = new Location()
+                    {
+                        City = ddSearchByCity.Items[ddSearchByCity.SelectedIndex],
+                        State = ddSearchByState.Items[ddSearchByState.SelectedIndex],
+                        Country = ddSearchByCountry.Items[ddSearchByCountry.SelectedIndex],
+                    },
+                    Memory = txtSearchByMemory.Text.Split(' ').ToList(),
+                    People = txtSearchByPeople.Text.Split(' ').ToList(),
+                    Tags = txtSearchByTag.Text.Split(' ').ToList(),
+
+                };
+                //App.Current.MainPage = new SearchResultsPage();
+                //App.Current.MainPage.Navigation.PushAsync(new SearchResultsPage());
 
                 await DisplayAlert("Success", "Memory search complete.", "OK");
             }
