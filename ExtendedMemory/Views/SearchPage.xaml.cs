@@ -13,12 +13,7 @@ namespace ExtendedMemory.Views
         {
             InitializeComponent();
 
-            var dds = new Picker[] { ddSearchByPeople, ddSearchByTag, ddSearchByCity, ddSearchByState, ddSearchByCountry };
-            foreach (var dd in dds)
-            {
-                dd.Items.Add("");
-                dd.SelectedIndexChanged += (sender, e) => AppendToTextField(txtSearchByTag, dd.SelectedItem.ToString());
-            }
+            InitializeDropdowns();
 
             Task.Run(async () => 
             { 
@@ -76,6 +71,27 @@ namespace ExtendedMemory.Views
             catch (Exception e)
             {
                 Console.WriteLine(e);
+            }
+        }
+
+        private void InitializeDropdowns()
+        {
+            var dds = new Dictionary<Picker, Entry>()
+            {
+                { ddSearchByPeople, txtSearchByPeople },
+                { ddSearchByTag, txtSearchByTag },
+                { ddSearchByCity, null },
+                { ddSearchByState, null },
+                { ddSearchByCountry, null },
+            };
+
+            foreach (var dd in dds)
+            {
+                dd.Key.Items.Add("");
+                if (dd.Value != null)
+                {
+                    dd.Key.SelectedIndexChanged += (sender, e) => AppendToTextField(dd.Value, dd.Key.SelectedItem.ToString());
+                }
             }
         }
 
