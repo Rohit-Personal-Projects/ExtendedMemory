@@ -1,30 +1,65 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Threading.Tasks;
+using Couchbase.Lite;
 using ExtendedMemory.DataAccess;
 using ExtendedMemory.Models;
 using Xamarin.Forms;
+
 
 [assembly: Dependency(typeof(MemoryDatabase))]
 namespace ExtendedMemory.DataAccess
 {
     public class MemoryDatabase : IMemoryDatabase
     {
+        static Database database;
+
         public MemoryDatabase()
         {
-            // Create a singleton db object here?
+            Couchbase.Lite.Storage.SystemSQLite.Plugin.Register();
+            database = Manager.SharedInstance.GetDatabase("extendedmemory");
         }
 
         public Response<string> Save(Memory memory)
         {
-            throw new NotImplementedException();
+            Dictionary<string, object> properties = new Dictionary<string, object>();
+            foreach (PropertyDescriptor x in TypeDescriptor.GetProperties(memory))
+            {
+                properties.Add(x.Name, x.GetValue(memory));
+            }
+
+            var document = database.CreateDocument();
+            //document.PutProperties(Memory.MemoryToDictionary(memory));
+            document.PutProperties(properties);
+
+            Console.WriteLine($"Document ID :: {document.Id}");
+            Console.WriteLine($"Learning {document.GetProperty("Text")} with location {document.GetProperty("Location")}");
+
+            return new Response<string>
+            {
+                IsSuccess = true,
+                Item = document.Id
+            };
         }
 
-        public List<Memory> Get()
+        public async Task<Response<List<Memory>>> Get()
         {
-            throw new NotImplementedException();
+            var memories = new List<Memory>();
+            var memoriesFromDB = await database.CreateAllDocumentsQuery().RunAsync();
+            foreach (var memoryRecord in memoriesFromDB)
+            {
+                memories.Add(Memory.DictToMemory(memoryRecord));
+            }
+
+            return new Response<List<Memory>>
+            {
+                IsSuccess = true,
+                Item = memories
+            };
         }
 
-        public Memory Get(SearchType searchType)
+        public Response<Memory> Get(SearchType searchType)
         {
             throw new NotImplementedException();
         }
