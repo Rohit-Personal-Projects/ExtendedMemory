@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using ExtendedMemory.DataAccess;
-using ExtendedMemory.Models;
 using Xamarin.Forms;
 
 namespace ExtendedMemory.Views
@@ -19,21 +20,40 @@ namespace ExtendedMemory.Views
                 dd.SelectedIndexChanged += (sender, e) => AppendToTextField(txtSearchByTag, dd.SelectedItem.ToString());
             }
 
-            Task.Run(async () => { 
-                var a23 = await DependencyService.Get<IMemoryDatabase>().Get();
+            Task.Run(async () => 
+            { 
+                var memories = await DependencyService.Get<IMemoryDatabase>().Get();
+                if (!memories.IsSuccess)
+                {
+                    // local log
+                }
+                else
+                {
+                    var peopleMap = new Dictionary<string, int>();
+                    var tagsMap = new Dictionary<string, int>();
+                    var cityMap = new Dictionary<string, int>();
+                    var stateMap = new Dictionary<string, int>();
+                    var countryMap = new Dictionary<string, int>();
 
-                ddSearchByPeople.Items.Add("Niki_Async");
-                ddSearchByPeople.Items.Add("Niki");
-                ddSearchByPeople.Items.Add("Sumit");
+                    memories.Item.ForEach(memory =>
+                    {
+                        memory.People.ForEach(v => AddByCount(v, peopleMap));
+                        memory.Tags.ForEach(v => AddByCount(v, tagsMap));
+                        if (memory.Location != null)
+                        {
+                            AddByCount(memory.Location.City, cityMap);
+                            AddByCount(memory.Location.State, stateMap);
+                            AddByCount(memory.Location.Country, countryMap);
+                        }
+                    });
 
-                ddSearchByTag.Items.Add("Swim");
-                ddSearchByTag.Items.Add("PS4");
+                    PopulateDropdown(ddSearchByPeople.Items, peopleMap);
+                    PopulateDropdown(ddSearchByTag.Items, tagsMap);
+                    PopulateDropdown(ddSearchByCity.Items, cityMap);
+                    PopulateDropdown(ddSearchByState.Items, stateMap);
+                    PopulateDropdown(ddSearchByCountry.Items, countryMap);
+                }
             }).Wait();
-        }
-
-        private void AppendToTextField(Entry entry, string text)
-        {
-            entry.Text += (String.IsNullOrWhiteSpace(entry.Text) ? "" : ", ") + text;
         }
 
         async void SearchMemory(object sender, EventArgs args)
@@ -57,6 +77,28 @@ namespace ExtendedMemory.Views
             {
                 Console.WriteLine(e);
             }
+        }
+
+        private void PopulateDropdown(IList<string> dropdownItems, Dictionary<string, int> itemDict)
+        {
+            foreach (var item in itemDict.OrderByDescending(p => p.Value))
+            {
+                dropdownItems.Add(item.Key);
+            }
+        }
+
+        private void AddByCount(string value, Dictionary<string, int> itemDict)
+        {
+            if (!String.IsNullOrWhiteSpace(value))
+            {
+                itemDict.TryGetValue(value, out var count);
+                itemDict[value] = count + 1;
+            }
+        }
+
+        private void AppendToTextField(Entry entry, string text)
+        {
+            entry.Text += (String.IsNullOrWhiteSpace(entry.Text) ? "" : ", ") + text;
         }
     }
 }
