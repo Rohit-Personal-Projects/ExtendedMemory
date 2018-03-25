@@ -60,16 +60,17 @@ namespace ExtendedMemory.Views
                     ToTime = tmSearchByTimeTo,
                     Location = new Location()
                     {
-                        City = ddSearchByCity.Items[ddSearchByCity.SelectedIndex],
-                        State = ddSearchByState.Items[ddSearchByState.SelectedIndex],
-                        Country = ddSearchByCountry.Items[ddSearchByCountry.SelectedIndex],
+                        City = ddSearchByCity.SelectedIndex != -1 ? ddSearchByCity.Items[ddSearchByCity.SelectedIndex]: "",
+                        State = ddSearchByState.SelectedIndex != -1 ? ddSearchByState.Items[ddSearchByState.SelectedIndex]: "",
+                        Country = ddSearchByCountry.SelectedIndex != -1 ? ddSearchByCountry.Items[ddSearchByCountry.SelectedIndex] : "",
                     },
-                    Memory = txtSearchByMemory.Text.Split(' ').ToList(),
-                    People = txtSearchByPeople.Text.Split(' ').ToList(),
-                    Tags = txtSearchByTag.Text.Split(' ').ToList(),
+                    Memory = !String.IsNullOrWhiteSpace(txtSearchByMemory.Text)?txtSearchByMemory.Text.Split(' ').ToList(): null,
+                    People = !String.IsNullOrWhiteSpace(txtSearchByPeople.Text)? txtSearchByPeople.Text.Split(' ').ToList(): null,
+                    Tags = !String.IsNullOrWhiteSpace(txtSearchByTag.Text)?  txtSearchByPeople.Text.Split(' ').ToList(): null
 
                 };
-                //App.Current.MainPage = new SearchResultsPage();
+
+                Application.Current.MainPage = new SearchResultsPage();
                 //App.Current.MainPage.Navigation.PushAsync(new SearchResultsPage());
 
                 await DisplayAlert("Success", "Memory search complete.", "OK");
