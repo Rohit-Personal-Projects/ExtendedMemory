@@ -1,14 +1,13 @@
 ﻿<Properties StartupConfiguration="{E9F5DE4C-CDA9-47EA-99D0-8CAAA9DAB05B}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ExtendedMemory/Views/SavePage.xaml.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/DataAccess/MemoryDatabase.cs">
     <Files>
       <File FileName="iOS/Main.cs" Line="10" Column="29" />
-      <File FileName="ExtendedMemory/App.xaml.cs" Line="28" Column="1" />
-      <File FileName="ExtendedMemory/Models/Memory.cs" Line="1" Column="1" />
-      <File FileName="ExtendedMemory/App.xaml" Line="19" Column="1" />
-      <File FileName="ExtendedMemory/Views/SearchPage.xaml.cs" Line="66" Column="44" />
-      <File FileName="ExtendedMemory/Views/SearchResultsPage.xaml.cs" Line="13" Column="10" />
-      <File FileName="ExtendedMemory/Views/SearchPage.xaml" Line="28" Column="29" />
-      <File FileName="ExtendedMemory/Views/SavePage.xaml.cs" Line="22" Column="1" />
+      <File FileName="ExtendedMemory/App.xaml.cs" Line="24" Column="37" />
+      <File FileName="ExtendedMemory/Models/Memory.cs" Line="21" Column="33" />
+      <File FileName="ExtendedMemory/Views/SavePage.xaml" Line="61" Column="15" />
+      <File FileName="ExtendedMemory/Views/SavePage.xaml.cs" Line="49" Column="90" />
+      <File FileName="ExtendedMemory/Views/SearchResultsPage.xaml.cs" Line="20" Column="15" />
+      <File FileName="iOS/DataAccess/MemoryDatabase.cs" Line="87" Column="79" />
       <File FileName="ExtendedMemory/Models/SearchParams.cs" Line="13" Column="42" NotebookId="1" />
       <File FileName="ExtendedMemory/Models/Location.cs" Line="3" Column="18" NotebookId="1" />
     </Files>

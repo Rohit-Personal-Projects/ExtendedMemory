@@ -67,10 +67,9 @@ namespace ExtendedMemory.Views
                     Memory = !String.IsNullOrWhiteSpace(txtSearchByMemory.Text)?txtSearchByMemory.Text.Split(' ').ToList(): null,
                     People = !String.IsNullOrWhiteSpace(txtSearchByPeople.Text)? txtSearchByPeople.Text.Split(' ').ToList(): null,
                     Tags = !String.IsNullOrWhiteSpace(txtSearchByTag.Text)?  txtSearchByPeople.Text.Split(' ').ToList(): null
-
                 };
 
-                Application.Current.MainPage = new SearchResultsPage();
+                Application.Current.MainPage = new SearchResultsPage(obj);
                 //App.Current.MainPage.Navigation.PushAsync(new SearchResultsPage());
 
                 await DisplayAlert("Success", "Memory search complete.", "OK");

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Threading.Tasks;
 using Couchbase.Lite;
 using ExtendedMemory.DataAccess;
@@ -59,14 +60,51 @@ namespace ExtendedMemory.DataAccess
             };
         }
 
-        public Response<Memory> Get(SearchType searchType)
+        public Response<string> Forget(Memory memory)
         {
             throw new NotImplementedException();
         }
 
-        public Response<string> Forget(Memory memory)
+        public Response<List<Memory>> Get(SearchParams searchParams)
         {
-            throw new NotImplementedException();
+            var memories = new List<Memory>();
+            var memoriesFromDB = database.CreateAllDocumentsQuery();
+            var rows = memoriesFromDB.Run();
+
+            foreach (var memoryRecord in rows)
+            {
+                Memory memory = new Memory();
+
+                if(searchParams.People!=null && searchParams.People.Any()){
+                    memory.People = (System.Collections.Generic.List<string>)memoryRecord.Document.GetProperty("People");
+                }
+
+                if (searchParams.Tags != null && searchParams.Tags.Any())
+                {
+                    memory.Tags = (System.Collections.Generic.List<string>)memoryRecord.Document.GetProperty("Tags");
+                }
+
+                if (searchParams.Location != null)
+                {
+                    memory.Location = (Location)memoryRecord.Document.GetProperty("Location");
+                }
+
+                if(searchParams.ToDate != null && searchParams.FromDate != null){
+                    //compare the to date and from date
+
+                }
+
+
+
+                memories.Add(memory);
+            }
+
+            return new Response<List<Memory>>
+            {
+                IsSuccess = true,
+                Item = memories
+            };
+
         }
     }
 }

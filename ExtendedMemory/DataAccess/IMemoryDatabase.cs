@@ -10,8 +10,10 @@ namespace ExtendedMemory.DataAccess
 
         Task<Response<List<Memory>>> Get();
 
-        Response<Memory> Get(SearchType searchType);
+
 
         Response<string> Forget(Memory memory);
+
+        Response<List<Memory>> Get(SearchParams searchParams);
     }
 }
