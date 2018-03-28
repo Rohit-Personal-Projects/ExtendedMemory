@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ExtendedMemory.DataAccess;
+using ExtendedMemory.Models;
 using Xamarin.Forms;
 
 namespace ExtendedMemory.Views
@@ -65,6 +66,26 @@ namespace ExtendedMemory.Views
                 //    await DisplayAlert("Enter Text", "Please enter some text", "OK");
                 //    return;
                 //}
+
+                SearchParams obj = new SearchParams()
+                {
+                    FromDate = dtSearchByDateFrom,
+                    ToDate = dtSearchByDateTo,
+                    FromTime = tmSearchByTimeFrom,
+                    ToTime = tmSearchByTimeTo,
+                    Location = new Location()
+                    {
+                        City = ddSearchByCity.SelectedIndex != -1 ? ddSearchByCity.Items[ddSearchByCity.SelectedIndex]: "",
+                        State = ddSearchByState.SelectedIndex != -1 ? ddSearchByState.Items[ddSearchByState.SelectedIndex]: "",
+                        Country = ddSearchByCountry.SelectedIndex != -1 ? ddSearchByCountry.Items[ddSearchByCountry.SelectedIndex] : "",
+                    },
+                    Memory = !String.IsNullOrWhiteSpace(txtSearchByMemory.Text)?txtSearchByMemory.Text.Split(' ').ToList(): null,
+                    People = !String.IsNullOrWhiteSpace(txtSearchByPeople.Text)? txtSearchByPeople.Text.Split(' ').ToList(): null,
+                    Tags = !String.IsNullOrWhiteSpace(txtSearchByTag.Text)?  txtSearchByPeople.Text.Split(' ').ToList(): null
+                };
+
+                Application.Current.MainPage = new SearchResultsPage(obj);
+                //App.Current.MainPage.Navigation.PushAsync(new SearchResultsPage());
 
                 await DisplayAlert("Success", "Memory search complete.", "OK");
             }

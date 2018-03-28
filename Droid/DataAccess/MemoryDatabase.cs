@@ -59,7 +59,7 @@ namespace ExtendedMemory.DataAccess
             };
         }
 
-        public Response<Memory> Get(SearchType searchType)
+        public Response<List<Memory>> Get(SearchParams searchParams)
         {
             throw new NotImplementedException();
         }
