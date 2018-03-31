@@ -71,32 +71,65 @@ namespace ExtendedMemory.DataAccess
             var memoriesFromDB = database.CreateAllDocumentsQuery();
             var rows = memoriesFromDB.Run();
 
-            foreach (var memoryRecord in rows)
+            foreach (var row in rows)
             {
-                Memory memory = new Memory();
+                var memoryRecord = Memory.DictToMemory(row);
 
-                if(searchParams.People!=null && searchParams.People.Any()){
-                    memory.People = (System.Collections.Generic.List<string>)memoryRecord.Document.GetProperty("People");
-                }
-
-                if (searchParams.Tags != null && searchParams.Tags.Any())
+                if (searchParams.Memory != null && searchParams.Memory.Any() &&
+                    !String.IsNullOrWhiteSpace(memoryRecord.Text) &&
+                    !searchParams.Memory.Any(m => memoryRecord.Text.IndexOf(m, StringComparison.OrdinalIgnoreCase) >= 0))
                 {
-                    memory.Tags = (System.Collections.Generic.List<string>)memoryRecord.Document.GetProperty("Tags");
+                    continue;
                 }
 
-                if (searchParams.Location != null)
+                if (searchParams.People != null && searchParams.People.Any() && 
+                    memoryRecord.People != null && memoryRecord.People.Any() &&
+                    !memoryRecord.People.Any(p => searchParams.People.Any(s => s.IndexOf(p, StringComparison.OrdinalIgnoreCase) >= 0)))
                 {
-                    memory.Location = (Location)memoryRecord.Document.GetProperty("Location");
+                    continue;
                 }
 
-                if(searchParams.ToDate != null && searchParams.FromDate != null){
-                    //compare the to date and from date
-
+                if (searchParams.Tags != null && searchParams.Tags.Any() &&
+                    memoryRecord.Tags != null && memoryRecord.Tags.Any() &&
+                    !memoryRecord.Tags.Any(p => searchParams.Tags.Any(s => s.IndexOf(p, StringComparison.OrdinalIgnoreCase) >= 0)))
+                {
+                    continue;
                 }
 
+                if (searchParams.Location != null && memoryRecord.Location != null) {
+                    if (!String.IsNullOrWhiteSpace(searchParams.Location.City) &&
+                        !String.IsNullOrWhiteSpace(memoryRecord.Location.City) &&
+                        !searchParams.Location.City.Equals(memoryRecord.Location.City))
+                    {
+                        continue;
+                    }
+                    if (!String.IsNullOrWhiteSpace(searchParams.Location.State) &&
+                        !String.IsNullOrWhiteSpace(memoryRecord.Location.State) &&
+                        !searchParams.Location.State.Equals(memoryRecord.Location.State))
+                    {
+                        continue;
+                    }
+                    if (!String.IsNullOrWhiteSpace(searchParams.Location.Country) &&
+                        !String.IsNullOrWhiteSpace(memoryRecord.Location.Country) &&
+                        !searchParams.Location.Country.Equals(memoryRecord.Location.Country))
+                    {
+                        continue;
+                    }
+                }
 
+                //if ((searchParams.FromDate != null && memoryRecord.DateTime.Date < searchParams.FromDate.Date) ||
+                //    (searchParams.ToDate != null && memoryRecord.DateTime.Date < searchParams.ToDate.Date))
+                //{
+                //    continue;
+                //}
 
-                memories.Add(memory);
+                //if ((searchParams.FromTime != null && memoryRecord.DateTime.TimeOfDay < searchParams.FromTime.Time) ||
+                //    (searchParams.ToTime != null && memoryRecord.DateTime.TimeOfDay < searchParams.ToTime.Time))
+                //{
+                //    continue;
+                //}
+
+                memories.Add(memoryRecord);
             }
 
             return new Response<List<Memory>>

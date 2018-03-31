@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using Couchbase.Lite;
 using Newtonsoft.Json;
 
@@ -19,8 +18,6 @@ namespace ExtendedMemory.Models
         public Location Location { get; set; }
 
         public DateTime DateTime { get; set; }
-
-        public Memory() { }
 
         public static Memory DictToMemory(QueryRow row)
         {

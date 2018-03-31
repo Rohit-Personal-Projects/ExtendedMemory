@@ -52,13 +52,11 @@ namespace ExtendedMemory.Views
             }).Wait();
         }
 
-        async void SearchMemory(object sender, EventArgs args)
+        void SearchMemory(object sender, EventArgs args)
         {
             try
             {
                 Button button = (Button)sender;
-
-                var a = ddSearchByPeople.SelectedItem?.ToString();
 
                 //if nothin to search
                 //if (String.IsNullOrWhiteSpace(txtEntry.Text))
@@ -86,8 +84,6 @@ namespace ExtendedMemory.Views
 
                 Application.Current.MainPage = new SearchResultsPage(obj);
                 //App.Current.MainPage.Navigation.PushAsync(new SearchResultsPage());
-
-                await DisplayAlert("Success", "Memory search complete.", "OK");
             }
             catch (Exception e)
             {
