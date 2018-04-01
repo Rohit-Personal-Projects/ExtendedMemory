@@ -6,4 +6,11 @@
                Text="Result"
                HorizontalTextAlignment="Center"
                VerticalTextAlignment="Center" />
+    <ListView x:Name="Memory">
+          <ListView.ItemTemplate>
+          <DataTemplate>
+            <TextCell Text="{Binding Text}"/>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
 </ContentPage>

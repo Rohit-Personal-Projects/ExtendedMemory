@@ -8,7 +8,7 @@ namespace ExtendedMemory.DataAccess
     {
         Response<string> Save(Memory memory);
 
-        Task<Response<List<Memory>>> Get();
+     Response<List<Memory>> Get();
 
 
 

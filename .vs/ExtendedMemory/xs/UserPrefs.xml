@@ -1,21 +1,24 @@
 ﻿<Properties StartupConfiguration="{E9F5DE4C-CDA9-47EA-99D0-8CAAA9DAB05B}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ExtendedMemory/Views/SearchPage.xaml.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ExtendedMemory/Views/SavePage.xaml">
     <Files>
       <File FileName="iOS/Main.cs" Line="10" Column="29" />
       <File FileName="ExtendedMemory/App.xaml.cs" Line="24" Column="37" />
-      <File FileName="ExtendedMemory/Models/Memory.cs" Line="21" Column="33" />
       <File FileName="ExtendedMemory/Views/SavePage.xaml" Line="61" Column="15" />
-      <File FileName="ExtendedMemory/Views/SavePage.xaml.cs" Line="49" Column="90" />
-      <File FileName="ExtendedMemory/Views/SearchResultsPage.xaml.cs" Line="1" Column="1" />
-      <File FileName="iOS/DataAccess/MemoryDatabase.cs" Line="87" Column="50" />
-      <File FileName="ExtendedMemory/Views/SearchPage.xaml.cs" Line="5" Column="1" />
-      <File FileName="ExtendedMemory/Models/SearchParams.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="ExtendedMemory/Views/SearchResultsPage.xaml.cs" Line="20" Column="1" />
+      <File FileName="ExtendedMemory/Views/SearchResultsPage.xaml" Line="17" Column="1" />
+      <File FileName="iOS/DataAccess/MemoryDatabase.cs" Line="15" Column="35" />
+      <File FileName="ExtendedMemory/Models/Memory.cs" Line="21" Column="33" />
+      <File FileName="ExtendedMemory/DataAccess/IMemoryDatabase.cs" Line="11" Column="28" />
+      <File FileName="Droid/DataAccess/MemoryDatabase.cs" Line="46" Column="16" />
+      <File FileName="ExtendedMemory/Views/SearchPage.xaml.cs" Line="21" Column="32" />
       <File FileName="ExtendedMemory/Models/Location.cs" Line="3" Column="18" NotebookId="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/nikithachettiar/Documents/Rohit/ExtendedMemory/ExtendedMemory/Views/SearchResultsPage.xaml.cs" relfile="ExtendedMemory/Views/SearchResultsPage.xaml.cs" line="20" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.ExtendedMemory.Droid AndroidDesignerPreferredTheme="Theme.DeviceDefault.NoActionBar.Fullscreen" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

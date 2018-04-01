@@ -44,10 +44,10 @@ namespace ExtendedMemory.DataAccess
             };
         }
 
-        public async Task<Response<List<Memory>>> Get()
+        public Response<List<Memory>> Get()
         {
             var memories = new List<Memory>();
-            var memoriesFromDB = await database.CreateAllDocumentsQuery().RunAsync();
+            var memoriesFromDB =  database.CreateAllDocumentsQuery().Run();
             foreach (var memoryRecord in memoriesFromDB)
             {
                 memories.Add(Memory.DictToMemory(memoryRecord));

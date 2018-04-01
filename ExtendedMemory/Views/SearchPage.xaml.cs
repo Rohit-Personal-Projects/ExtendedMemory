@@ -18,7 +18,7 @@ namespace ExtendedMemory.Views
 
             Task.Run(async () => 
             { 
-                var memories = await DependencyService.Get<IMemoryDatabase>().Get();
+                var memories = DependencyService.Get<IMemoryDatabase>().Get();
                 if (!memories.IsSuccess)
                 {
                     // local log
