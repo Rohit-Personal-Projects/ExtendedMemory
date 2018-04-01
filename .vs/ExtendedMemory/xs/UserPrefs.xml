@@ -1,25 +1,15 @@
-<Properties StartupConfiguration="{E9F5DE4C-CDA9-47EA-99D0-8CAAA9DAB05B}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ExtendedMemory/Views/HomePage.xaml">
+﻿<Properties StartupConfiguration="{E9F5DE4C-CDA9-47EA-99D0-8CAAA9DAB05B}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ExtendedMemory Status">
     <Files>
-      <File FileName="iOS/Main.cs" Line="10" Column="29" />
-      <File FileName="ExtendedMemory/App.xaml.cs" Line="24" Column="37" />
-      <File FileName="ExtendedMemory/Views/SavePage.xaml" Line="56" Column="45" />
-      <File FileName="ExtendedMemory/Models/Location.cs" Line="3" Column="18" />
-      <File FileName="ExtendedMemory/Views/SavePage.xaml.cs" Line="51" Column="13" />
-      <File FileName="ExtendedMemory/DataAccess/MemoryDatabase.cs" Line="147" Column="2" />
-      <File FileName="ExtendedMemory/Views/SearchResultsPage.xaml" Line="21" Column="43" />
-      <File FileName="ExtendedMemory/Views/SearchPage.xaml" Line="96" Column="15" />
+      <File FileName="ExtendedMemory Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/nikithachettiar/Documents/Rohit/ExtendedMemory/ExtendedMemory/DataAccess/MemoryDatabase.cs" relfile="ExtendedMemory/DataAccess/MemoryDatabase.cs" line="77" column="1" />
-      <Breakpoint file="/Users/nikithachettiar/Documents/Rohit/ExtendedMemory/ExtendedMemory/DataAccess/MemoryDatabase.cs" relfile="ExtendedMemory/DataAccess/MemoryDatabase.cs" line="137" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.ExtendedMemory.Droid AndroidDesignerPreferredTheme="Theme.DeviceDefault.NoActionBar.Fullscreen" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.ExtendedMemory.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.7278B2DC-CDA6-4A16-8722-8FD57B254489" />
+  <MonoDevelop.Ide.ItemProperties.ExtendedMemory.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.3A0C59C0-B9C1-4D54-B47A-4BFA58120CB4" />
   <MultiItemStartupConfigurations />
 </Properties>
