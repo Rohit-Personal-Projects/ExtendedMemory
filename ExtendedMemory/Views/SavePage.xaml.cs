@@ -33,8 +33,8 @@ namespace ExtendedMemory.Views
                 var memory = new Memory
                 {
                     Text = txtEntry.Text,
-                    People = txtPeople.Text.Split(' ').ToList(),
-                    Tags = txtTags.Text.Split(' ').ToList(),
+                    People = txtPeople.Text?.Split(' ')?.ToList(),
+                    Tags = txtTags.Text?.Split(' ')?.ToList(),
                     DateTime = date.Date + time.Time,
                     Location = new Location
                     {
