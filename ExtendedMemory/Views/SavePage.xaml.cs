@@ -18,7 +18,7 @@ namespace ExtendedMemory.Views
             DependencyService.Get<IGetLocation>().GetUserLocation(entryCity, entryState, entryCountry);
         }
 
-        async void OnButtonClicked(object sender, EventArgs args)
+        async void SaveMemory(object sender, EventArgs args)
         {
             try
             {
