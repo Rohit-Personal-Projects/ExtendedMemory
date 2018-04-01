@@ -18,7 +18,7 @@ namespace ExtendedMemory.Views
             DependencyService.Get<IGetLocation>().GetUserLocation(entryCity, entryState, entryCountry);
         }
 
-        async void OnButtonClicked(object sender, EventArgs args)
+        async void SaveMemory(object sender, EventArgs args)
         {
             try
             {
@@ -33,8 +33,8 @@ namespace ExtendedMemory.Views
                 var memory = new Memory
                 {
                     Text = txtEntry.Text,
-                    People = txtPeople.Text.Split(' ').ToList(),
-                    Tags = txtTags.Text.Split(' ').ToList(),
+                    People = txtPeople.Text?.Split(' ')?.ToList(),
+                    Tags = txtTags.Text?.Split(' ')?.ToList(),
                     DateTime = date.Date + time.Time,
                     Location = new Location
                     {

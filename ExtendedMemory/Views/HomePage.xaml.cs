@@ -3,12 +3,12 @@
 namespace ExtendedMemory.Views
 {
     public partial class HomePage : TabbedPage
+    {
+        public HomePage()
         {
-            public HomePage()
-            {
-                Children.Add(new SavePage());
-                Children.Add(new SearchPage());
-                InitializeComponent();
-            }
+            Children.Add(new SavePage());
+            Children.Add(new SearchPage());
+            InitializeComponent();
         }
     }
+}

@@ -1,4 +1,4 @@
-﻿<Properties StartupConfiguration="{E9F5DE4C-CDA9-47EA-99D0-8CAAA9DAB05B}|Default">
+<Properties StartupConfiguration="{E9F5DE4C-CDA9-47EA-99D0-8CAAA9DAB05B}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="ExtendedMemory/Views/SearchResultsPage.xaml">
     <Files>
       <File FileName="iOS/Main.cs" Line="10" Column="29" />
