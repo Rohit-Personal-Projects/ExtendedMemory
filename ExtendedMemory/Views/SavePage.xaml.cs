@@ -44,7 +44,7 @@ namespace ExtendedMemory.Views
                     }
                 };
 
-                var saveResponse = DependencyService.Get<IMemoryDatabase>().Save(memory);
+                var saveResponse = new MemoryDatabase().Save(memory);
 
                 if (saveResponse.IsSuccess)
                 {

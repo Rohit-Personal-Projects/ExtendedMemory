@@ -19,8 +19,8 @@ namespace ExtendedMemory.Views
             InitializeDropdowns();
 
             Task.Run(async () => 
-            { 
-                var memories = await DependencyService.Get<IMemoryDatabase>().Get();
+            {
+                var memories = await new MemoryDatabase().Get();
                 if (!memories.IsSuccess)
                 {
                     // local log

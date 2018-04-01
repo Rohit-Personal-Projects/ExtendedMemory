@@ -4,14 +4,21 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Couchbase.Lite;
-using ExtendedMemory.DataAccess;
 using ExtendedMemory.Models;
-using Xamarin.Forms;
 
-
-[assembly: Dependency(typeof(MemoryDatabase))]
 namespace ExtendedMemory.DataAccess
 {
+    public interface IMemoryDatabase
+    {
+        Response<string> Save(Memory memory);
+
+        Task<Response<List<Memory>>> Get();
+
+        Response<string> Forget(Memory memory);
+
+        Response<List<Memory>> Get(SearchParams searchParams);
+    }
+
     public class MemoryDatabase : IMemoryDatabase
     {
         static Database database;
@@ -135,7 +142,6 @@ namespace ExtendedMemory.DataAccess
                 IsSuccess = true,
                 Item = memories
             };
-
         }
     }
 }
