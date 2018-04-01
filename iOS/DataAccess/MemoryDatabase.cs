@@ -117,14 +117,12 @@ namespace ExtendedMemory.DataAccess
                     }
                 }
 
-                if ((searchParams.FromDate != null && memoryRecord.DateTime.Date < searchParams.FromDate.Date) ||
-                    (searchParams.ToDate != null && memoryRecord.DateTime.Date > searchParams.ToDate.Date))
+                if (memoryRecord.DateTime < searchParams.FromDate || memoryRecord.DateTime > searchParams.ToDate)
                 {
                     continue;
                 }
 
-                if ((searchParams.FromTime != null && memoryRecord.DateTime.TimeOfDay < searchParams.FromTime.Time) ||
-                    (searchParams.ToTime != null && memoryRecord.DateTime.TimeOfDay > searchParams.ToTime.Time))
+                if (memoryRecord.DateTime.TimeOfDay < searchParams.FromTime || memoryRecord.DateTime.TimeOfDay > searchParams.ToTime)
                 {
                     continue;
                 }

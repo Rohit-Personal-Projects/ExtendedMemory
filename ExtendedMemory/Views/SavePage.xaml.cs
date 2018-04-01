@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using Couchbase.Lite;
 using ExtendedMemory.DataAccess;
 using ExtendedMemory.Helpers;
 using ExtendedMemory.Models;
