@@ -1,24 +1,24 @@
 ﻿<Properties StartupConfiguration="{E9F5DE4C-CDA9-47EA-99D0-8CAAA9DAB05B}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ExtendedMemory/Views/SearchPage.xaml.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ExtendedMemory/Views/SearchResultsPage.xaml.cs">
     <Files>
-      <File FileName="iOS/Main.cs" Line="10" Column="29" />
-      <File FileName="ExtendedMemory/App.xaml.cs" Line="24" Column="37" />
-      <File FileName="ExtendedMemory/Models/Memory.cs" Line="21" Column="33" />
-      <File FileName="ExtendedMemory/Views/SavePage.xaml" Line="61" Column="15" />
-      <File FileName="ExtendedMemory/Views/SavePage.xaml.cs" Line="49" Column="90" />
-      <File FileName="ExtendedMemory/Views/SearchResultsPage.xaml.cs" Line="1" Column="1" />
-      <File FileName="iOS/DataAccess/MemoryDatabase.cs" Line="87" Column="50" />
-      <File FileName="ExtendedMemory/Views/SearchPage.xaml.cs" Line="5" Column="1" />
-      <File FileName="ExtendedMemory/Models/SearchParams.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="ExtendedMemory/Models/Location.cs" Line="3" Column="18" NotebookId="1" />
+      <File FileName="ExtendedMemory/Views/SearchPage.xaml.cs" Line="66" Column="20" />
+      <File FileName="ExtendedMemory/Views/SearchResultsPage.xaml.cs" Line="25" Column="1" />
+      <File FileName="iOS/DataAccess/MemoryDatabase.cs" Line="83" Column="18" />
+      <File FileName="ExtendedMemory/Models/Memory.cs" Line="22" Column="35" />
+      <File FileName="ExtendedMemory/Models/SearchParams.cs" Line="22" Column="9" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/rohit/Drive_Sync/Code/ExtendedMemory/ExtendedMemory/iOS/DataAccess/MemoryDatabase.cs" relfile="iOS/DataAccess/MemoryDatabase.cs" line="76" column="1" />
+      <Breakpoint file="/Users/rohit/Drive_Sync/Code/ExtendedMemory/ExtendedMemory/iOS/DataAccess/MemoryDatabase.cs" relfile="iOS/DataAccess/MemoryDatabase.cs" line="74" column="1" />
+      <Breakpoint file="/Users/rohit/Drive_Sync/Code/ExtendedMemory/ExtendedMemory/iOS/DataAccess/MemoryDatabase.cs" relfile="iOS/DataAccess/MemoryDatabase.cs" line="135" column="1" />
+      <Breakpoint file="/Users/rohit/Drive_Sync/Code/ExtendedMemory/ExtendedMemory/ExtendedMemory/Views/SearchResultsPage.xaml.cs" relfile="ExtendedMemory/Views/SearchResultsPage.xaml.cs" line="16" column="1" />
+      <Breakpoint file="/Users/rohit/Drive_Sync/Code/ExtendedMemory/ExtendedMemory/ExtendedMemory/Views/SearchPage.xaml.cs" relfile="ExtendedMemory/Views/SearchPage.xaml.cs" line="59" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.ExtendedMemory.Droid AndroidDesignerPreferredTheme="Theme.DeviceDefault.NoActionBar.Fullscreen" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.ExtendedMemory.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.6758FA01-B455-4D2A-9A22-0EB18119409F" />
+  <MonoDevelop.Ide.ItemProperties.ExtendedMemory.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.3A0C59C0-B9C1-4D54-B47A-4BFA58120CB4" />
   <MultiItemStartupConfigurations />
 </Properties>
