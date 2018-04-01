@@ -1,12 +1,14 @@
 ﻿<Properties StartupConfiguration="{E9F5DE4C-CDA9-47EA-99D0-8CAAA9DAB05B}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ExtendedMemory/DataAccess/MemoryDatabase.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ExtendedMemory/Views/SearchResultsPage.xaml">
     <Files>
       <File FileName="iOS/Main.cs" Line="10" Column="29" />
       <File FileName="ExtendedMemory/App.xaml.cs" Line="24" Column="37" />
-      <File FileName="ExtendedMemory/Views/SavePage.xaml" Line="61" Column="15" />
+      <File FileName="ExtendedMemory/Views/SavePage.xaml" Line="56" Column="45" />
       <File FileName="ExtendedMemory/Models/Location.cs" Line="3" Column="18" />
       <File FileName="ExtendedMemory/Views/SavePage.xaml.cs" Line="51" Column="13" />
       <File FileName="ExtendedMemory/DataAccess/MemoryDatabase.cs" Line="147" Column="2" />
+      <File FileName="ExtendedMemory/Views/SearchResultsPage.xaml" Line="21" Column="43" />
+      <File FileName="ExtendedMemory/Views/SearchPage.xaml" Line="96" Column="15" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
