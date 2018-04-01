@@ -39,7 +39,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Location.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\IGetLocation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\IFileLocation.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DataAccess\IMemoryDatabase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Memory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\SavePage.xaml.cs">
       <DependentUpon>SavePage.xaml</DependentUpon>
@@ -53,6 +52,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\SearchResultsPage.xaml.cs">
       <DependentUpon>SearchResultsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)DataAccess\MemoryDatabase.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />

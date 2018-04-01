@@ -1,16 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ExtendedMemory.Views.SearchResultsPage">
-    <ContentPage.Content>
-    </ContentPage.Content>
-    <Label Grid.Row="0" Grid.Column="0"
-               Text="Result"
-               HorizontalTextAlignment="Center"
-               VerticalTextAlignment="Center" />
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="ExtendedMemory.Views.SearchResultsPage"
+             Title="Search Results" >
+
+    <Button Text="Back" Clicked="BackToSearch" />
+            
+    <Label Text="Result"
+           HorizontalTextAlignment="Center"
+           VerticalTextAlignment="Center" />
+
     <ListView x:Name="Memory">
-          <ListView.ItemTemplate>
-          <DataTemplate>
-            <TextCell Text="{Binding Text}"/>
-          </DataTemplate>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding Text}"/>
+            </DataTemplate>
         </ListView.ItemTemplate>
-      </ListView>
+    </ListView>
+
 </ContentPage>

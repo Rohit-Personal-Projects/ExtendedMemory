@@ -14,11 +14,13 @@ namespace ExtendedMemory.Views
         {
             InitializeComponent();
 
+            tmSearchByTimeTo.Time = new TimeSpan(23, 59, 59);
+            dtSearchByDateFrom.Date = new DateTime(1900, 1, 1);
             InitializeDropdowns();
 
             Task.Run(async () => 
-            { 
-                var memories = DependencyService.Get<IMemoryDatabase>().Get();
+            {
+                var memories = await new MemoryDatabase().Get();
                 if (!memories.IsSuccess)
                 {
                     // local log
@@ -52,42 +54,30 @@ namespace ExtendedMemory.Views
             }).Wait();
         }
 
-        async void SearchMemory(object sender, EventArgs args)
+        void SearchMemory(object sender, EventArgs args)
         {
             try
             {
                 Button button = (Button)sender;
 
-                var a = ddSearchByPeople.SelectedItem?.ToString();
-
-                //if nothin to search
-                //if (String.IsNullOrWhiteSpace(txtEntry.Text))
-                //{
-                //    await DisplayAlert("Enter Text", "Please enter some text", "OK");
-                //    return;
-                //}
-
-                SearchParams obj = new SearchParams()
+                var searchParams = new SearchParams()
                 {
-                    FromDate = dtSearchByDateFrom,
-                    ToDate = dtSearchByDateTo,
-                    FromTime = tmSearchByTimeFrom,
-                    ToTime = tmSearchByTimeTo,
+                    Memory = !String.IsNullOrWhiteSpace(txtSearchByMemory.Text) ? txtSearchByMemory.Text.Split(' ').ToList() : null,
+                    People = !String.IsNullOrWhiteSpace(txtSearchByPeople.Text) ? txtSearchByPeople.Text.Split(' ').ToList() : null,
+                    Tags = !String.IsNullOrWhiteSpace(txtSearchByTag.Text) ? txtSearchByPeople.Text.Split(' ').ToList() : null,
                     Location = new Location()
                     {
                         City = ddSearchByCity.SelectedIndex != -1 ? ddSearchByCity.Items[ddSearchByCity.SelectedIndex]: "",
                         State = ddSearchByState.SelectedIndex != -1 ? ddSearchByState.Items[ddSearchByState.SelectedIndex]: "",
                         Country = ddSearchByCountry.SelectedIndex != -1 ? ddSearchByCountry.Items[ddSearchByCountry.SelectedIndex] : "",
                     },
-                    Memory = !String.IsNullOrWhiteSpace(txtSearchByMemory.Text)?txtSearchByMemory.Text.Split(' ').ToList(): null,
-                    People = !String.IsNullOrWhiteSpace(txtSearchByPeople.Text)? txtSearchByPeople.Text.Split(' ').ToList(): null,
-                    Tags = !String.IsNullOrWhiteSpace(txtSearchByTag.Text)?  txtSearchByPeople.Text.Split(' ').ToList(): null
+                    FromDate = dtSearchByDateFrom.Date,
+                    ToDate = dtSearchByDateTo.Date.AddDays(1),
+                    FromTime = tmSearchByTimeFrom.Time,
+                    ToTime = tmSearchByTimeTo.Time
                 };
 
-                Application.Current.MainPage = new SearchResultsPage(obj);
-                //App.Current.MainPage.Navigation.PushAsync(new SearchResultsPage());
-
-                await DisplayAlert("Success", "Memory search complete.", "OK");
+                Application.Current.MainPage = new SearchResultsPage(searchParams);
             }
             catch (Exception e)
             {

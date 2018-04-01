@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using Couchbase.Lite;
 using ExtendedMemory.DataAccess;
 using ExtendedMemory.Helpers;
 using ExtendedMemory.Models;
@@ -46,7 +44,7 @@ namespace ExtendedMemory.Views
                     }
                 };
 
-                var saveResponse = DependencyService.Get<IMemoryDatabase>().Save(memory);
+                var saveResponse = new MemoryDatabase().Save(memory);
 
                 if (saveResponse.IsSuccess)
                 {
