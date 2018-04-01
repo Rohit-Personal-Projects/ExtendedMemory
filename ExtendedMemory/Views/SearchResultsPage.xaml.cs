@@ -14,13 +14,15 @@ namespace ExtendedMemory.Views
         public SearchResultsPage(SearchParams searchParams)
         {
             var searchResult = DependencyService.Get<IMemoryDatabase>().Get(searchParams);
+            if (searchResult.IsSuccess)
+            {
+                DisplayAlert("Success", searchResult.Item.Count + " results found", "OK");
+            }
+            else {
+                DisplayAlert("Failure", "Something went wrong", "OK");
+            }
 
-            //Console.Write("here is the record"+searchResult.Item[0].Location);
-
-            DisplayAlert(searchResult.IsSuccess ? "Success" : "Failure", searchResult.Item.ToString(), "OK");
-            //DisplayAlert("Success", "Memory search complete.", "OK");
-
-            Application.Current.MainPage = new SearchPage();
+            Application.Current.MainPage = new HomePage() {CurrentPage = new SearchPage()};
         }
     }
 }

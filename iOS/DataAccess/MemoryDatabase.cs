@@ -117,17 +117,17 @@ namespace ExtendedMemory.DataAccess
                     }
                 }
 
-                //if ((searchParams.FromDate != null && memoryRecord.DateTime.Date < searchParams.FromDate.Date) ||
-                //    (searchParams.ToDate != null && memoryRecord.DateTime.Date < searchParams.ToDate.Date))
-                //{
-                //    continue;
-                //}
+                if ((searchParams.FromDate != null && memoryRecord.DateTime.Date < searchParams.FromDate.Date) ||
+                    (searchParams.ToDate != null && memoryRecord.DateTime.Date > searchParams.ToDate.Date))
+                {
+                    continue;
+                }
 
-                //if ((searchParams.FromTime != null && memoryRecord.DateTime.TimeOfDay < searchParams.FromTime.Time) ||
-                //    (searchParams.ToTime != null && memoryRecord.DateTime.TimeOfDay < searchParams.ToTime.Time))
-                //{
-                //    continue;
-                //}
+                if ((searchParams.FromTime != null && memoryRecord.DateTime.TimeOfDay < searchParams.FromTime.Time) ||
+                    (searchParams.ToTime != null && memoryRecord.DateTime.TimeOfDay > searchParams.ToTime.Time))
+                {
+                    continue;
+                }
 
                 memories.Add(memoryRecord);
             }

@@ -14,6 +14,8 @@ namespace ExtendedMemory.Views
         {
             InitializeComponent();
 
+            tmSearchByTimeTo.Time = new TimeSpan(23, 59, 59);
+            dtSearchByDateFrom.Date = new DateTime(1900, 1, 1);
             InitializeDropdowns();
 
             Task.Run(async () => 
