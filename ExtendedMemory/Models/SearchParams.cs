@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace ExtendedMemory.Models
@@ -11,14 +12,14 @@ namespace ExtendedMemory.Models
 
         public List<string> Tags { get; set; } = new List<string>();
 
-        public Location Location { get; set; }
+        public Location Location { get; set; } = new Location();
 
-        public DatePicker FromDate { get; set; }
+        public DateTime FromDate { get; set; }
 
-        public DatePicker ToDate { get; set; }
+        public DateTime ToDate { get; set; }
 
-        public TimePicker FromTime { get; set; }
+        public TimeSpan FromTime { get; set; }
 
-        public TimePicker ToTime { get; set; }
+        public TimeSpan ToTime { get; set; }
     }
 }

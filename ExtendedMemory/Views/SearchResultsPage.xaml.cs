@@ -1,4 +1,5 @@
-﻿using ExtendedMemory.DataAccess;
+﻿using System;
+using ExtendedMemory.DataAccess;
 using ExtendedMemory.Models;
 using Xamarin.Forms;
 
@@ -13,14 +14,28 @@ namespace ExtendedMemory.Views
 
         public SearchResultsPage(SearchParams searchParams)
         {
-            var searchResult = DependencyService.Get<IMemoryDatabase>().Get(searchParams);
+            InitializeComponent();
 
-            //Console.Write("here is the record"+searchResult.Item[0].Location);
+            var searchResult = new MemoryDatabase().Get(searchParams);
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                if (searchResult.IsSuccess)
+                {
+                    DisplayAlert("Success", searchResult.Item.Count + " results found", "OK");
+                }
+                else
+                {
+                    DisplayAlert("Failure", "Something went wrong", "OK");
+                }
+            });
+        }
 
-            DisplayAlert(searchResult.IsSuccess ? "Success" : "Failure", searchResult.Item.ToString(), "OK");
-            //DisplayAlert("Success", "Memory search complete.", "OK");
-
-            Application.Current.MainPage = new SearchPage();
+        void BackToSearch(object sender, EventArgs args)
+        {
+            Application.Current.MainPage = new HomePage()
+            {
+                CurrentPage = new SearchPage()
+            };
         }
     }
 }

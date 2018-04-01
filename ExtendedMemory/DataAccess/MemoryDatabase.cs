@@ -4,14 +4,21 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Couchbase.Lite;
-using ExtendedMemory.DataAccess;
 using ExtendedMemory.Models;
-using Xamarin.Forms;
 
-
-[assembly: Dependency(typeof(MemoryDatabase))]
 namespace ExtendedMemory.DataAccess
 {
+    public interface IMemoryDatabase
+    {
+        Response<string> Save(Memory memory);
+
+        Task<Response<List<Memory>>> Get();
+
+        Response<string> Forget(Memory memory);
+
+        Response<List<Memory>> Get(SearchParams searchParams);
+    }
+
     public class MemoryDatabase : IMemoryDatabase
     {
         static Database database;
@@ -117,17 +124,15 @@ namespace ExtendedMemory.DataAccess
                     }
                 }
 
-                //if ((searchParams.FromDate != null && memoryRecord.DateTime.Date < searchParams.FromDate.Date) ||
-                //    (searchParams.ToDate != null && memoryRecord.DateTime.Date < searchParams.ToDate.Date))
-                //{
-                //    continue;
-                //}
+                if (memoryRecord.DateTime < searchParams.FromDate || memoryRecord.DateTime > searchParams.ToDate)
+                {
+                    continue;
+                }
 
-                //if ((searchParams.FromTime != null && memoryRecord.DateTime.TimeOfDay < searchParams.FromTime.Time) ||
-                //    (searchParams.ToTime != null && memoryRecord.DateTime.TimeOfDay < searchParams.ToTime.Time))
-                //{
-                //    continue;
-                //}
+                if (memoryRecord.DateTime.TimeOfDay < searchParams.FromTime || memoryRecord.DateTime.TimeOfDay > searchParams.ToTime)
+                {
+                    continue;
+                }
 
                 memories.Add(memoryRecord);
             }
@@ -137,7 +142,6 @@ namespace ExtendedMemory.DataAccess
                 IsSuccess = true,
                 Item = memories
             };
-
         }
     }
 }
