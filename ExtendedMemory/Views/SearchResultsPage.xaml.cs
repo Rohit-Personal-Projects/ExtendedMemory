@@ -20,13 +20,15 @@ namespace ExtendedMemory.Views
             InitializeComponent();
 
             var searchResult = new MemoryDatabase().Get(searchParams);
-
-            var listView = new ListView();
-            ObservableCollection<Memory> mems = new ObservableCollection<Memory>();
-
-            mems.Add(new Memory{Text = "Nikitha"});
-            Memory.ItemsSource = searchResult.Item;
-              
+            if (searchResult.IsSuccess)
+            {
+                Memory.ItemsSource = searchResult.Item;
+                Device.BeginInvokeOnMainThread(() => DisplayAlert("Success", searchResult.Item.Count + " results found", "OK"));
+            }
+            else
+            {
+                Device.BeginInvokeOnMainThread(() => DisplayAlert("Failure", "Something went wrong", "OK"));
+            }
         }
 
         void BackToSearch(object sender, EventArgs args)
