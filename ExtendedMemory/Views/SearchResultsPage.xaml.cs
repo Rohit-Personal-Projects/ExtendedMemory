@@ -1,4 +1,7 @@
-﻿using System;
+﻿﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+
 using ExtendedMemory.DataAccess;
 using ExtendedMemory.Models;
 using Xamarin.Forms;
@@ -17,17 +20,15 @@ namespace ExtendedMemory.Views
             InitializeComponent();
 
             var searchResult = new MemoryDatabase().Get(searchParams);
-            Device.BeginInvokeOnMainThread(() =>
+            if (searchResult.IsSuccess)
             {
-                if (searchResult.IsSuccess)
-                {
-                    DisplayAlert("Success", searchResult.Item.Count + " results found", "OK");
-                }
-                else
-                {
-                    DisplayAlert("Failure", "Something went wrong", "OK");
-                }
-            });
+                Memory.ItemsSource = searchResult.Item;
+                Device.BeginInvokeOnMainThread(() => DisplayAlert("Success", searchResult.Item.Count + " results found", "OK"));
+            }
+            else
+            {
+                Device.BeginInvokeOnMainThread(() => DisplayAlert("Failure", "Something went wrong", "OK"));
+            }
         }
 
         void BackToSearch(object sender, EventArgs args)

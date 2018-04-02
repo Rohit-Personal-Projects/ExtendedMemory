@@ -72,7 +72,7 @@ namespace ExtendedMemory.Views
                         Country = ddSearchByCountry.SelectedIndex != -1 ? ddSearchByCountry.Items[ddSearchByCountry.SelectedIndex] : "",
                     },
                     FromDate = dtSearchByDateFrom.Date,
-                    ToDate = dtSearchByDateTo.Date,
+                    ToDate = dtSearchByDateTo.Date.AddDays(1),
                     FromTime = tmSearchByTimeFrom.Time,
                     ToTime = tmSearchByTimeTo.Time
                 };

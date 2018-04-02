@@ -3,27 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="ExtendedMemory.Views.SearchResultsPage"
              Title="Search Results" >
-    
+
     <Grid RowSpacing="40">
         <Grid.RowDefinitions>
-            <RowDefinition Height="100" />
             <RowDefinition Height="50" />
-            <RowDefinition Height="100" />
+            <RowDefinition Height="Auto" />
+       
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="100" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        
-
-        <Button Grid.Row="0" Grid.Column="0"
-            Text="Back" Clicked="BackToSearch" />
-            
-        <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-               Text="Result"
-               HorizontalTextAlignment="Center"
-               VerticalTextAlignment="Center" />
-
+         <Button Text="Back"   Grid.Row="0" Grid.Column="0" Clicked="BackToSearch" BorderWidth="1"/>
+         <Label Text="Result"  Grid.Row="0" Grid.Column="1"
+           HorizontalTextAlignment="Center"
+           VerticalTextAlignment="Center" />
+        <ListView x:Name="Memory"  Grid.Row="1"  Grid.ColumnSpan="2">
+ 
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding Text}"/>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
     </Grid>
+
+  
+
 </ContentPage>
