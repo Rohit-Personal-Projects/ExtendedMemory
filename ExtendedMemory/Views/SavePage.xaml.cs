@@ -5,7 +5,6 @@ using ExtendedMemory.Helpers;
 using ExtendedMemory.Models;
 using Xamarin.Forms;
 
-
 namespace ExtendedMemory.Views
 {
     public partial class SavePage : ContentPage
