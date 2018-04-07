@@ -4,31 +4,26 @@
              x:Class="ExtendedMemory.Views.SearchResultsPage"
              Title="Search Results" >
 
-    <Grid RowSpacing="40">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
-            <RowDefinition Height="Auto" />
-       
-        </Grid.RowDefinitions>
+    <ContentPage.Content>
+        <StackLayout x:Name="stackResult">
+            <Label />
+            
+            <Button HorizontalOptions="Start"
+                Text="Back"
+                Clicked="BackToSearch" />
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-         <Button Text="Back"   Grid.Row="0" Grid.Column="0" Clicked="BackToSearch" BorderWidth="1"/>
-         <Label Text="Result"  Grid.Row="0" Grid.Column="1"
-           HorizontalTextAlignment="Center"
-           VerticalTextAlignment="Center" />
-        <ListView x:Name="Memory"  Grid.Row="1"  Grid.ColumnSpan="2">
- 
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <TextCell Text="{Binding Text}"/>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
-    </Grid>
-
-  
+            <Label Text="Search Results"
+               HorizontalTextAlignment="Center" VerticalOptions="Start" />
+        
+            <ListView x:Name="Memory">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Text}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+        </StackLayout>
+    </ContentPage.Content>
 
 </ContentPage>
