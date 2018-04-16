@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Couchbase.Lite;
 using Newtonsoft.Json;
 
@@ -19,33 +21,6 @@ namespace ExtendedMemory.Models
 
         public DateTime DateTime { get; set; }
 
-        /// <summary>
-        /// Whether to show the details of the memory on the search results page.
-        /// </summary>
-        private bool ShowDetails;
-
-        /// <summary>
-        /// On the search results page, whether to display text or the entire memory.
-        /// </summary>
-        public string DisplayText;
-
-        /// <summary>
-        /// Switches what's displayed on the screen.
-        /// </summary>
-        public void ShowHideDetails()
-        {
-            if (ShowDetails)
-            {
-                ShowDetails = false;
-                DisplayText = Text;
-            }
-            else
-            {
-                ShowDetails = true;
-                DisplayText = StringRepresentation();
-            }
-        }
-
         public static Memory DictToMemory(QueryRow row)
         {
             var m = new Memory();
@@ -64,8 +39,6 @@ namespace ExtendedMemory.Models
                     {
                         case nameof(m.ID):
                         case nameof(m.Text):
-                        case nameof(m.DisplayText):
-                        case nameof(m.ShowDetails):
                             key.SetValue(result, val, null);
                             break;
 
@@ -91,16 +64,37 @@ namespace ExtendedMemory.Models
             return result;
         }
 
-        private string StringRepresentation()
+        /// <summary>
+        /// Entire memory object converted to a string; used for display on the search results page.
+        /// </summary>
+        public string MemoryDetails()
         {
-            return string.Format(
-                "[Memory: ID={0}, Text={1}, Date={2}, City={3}, State={4}, Country={5}, People=[{6}], Tags=[{7}]]", 
-                ID, Text, DateTime, Location?.City, Location?.State, Location?.Country, String.Join(", ", People), String.Join(", ", Tags));
+            var res = new StringBuilder();
+
+            if (People != null && People.Any())
+            {
+                res.Append($"\nWith {String.Join(", ", People)}");
+            }
+            if (Location != null)
+            {
+                var loc = Location.ToString();
+                if (!string.IsNullOrWhiteSpace(loc))
+                {
+                    res.Append($"\nIn {loc}");
+                }
+            }
+            res.Append($"\nOn {DateTime.Date.ToShortDateString()} at {DateTime.ToString("hh:mm tt")}");
+            if (Tags != null && Tags.Any())
+            {
+                res.Append($"\nTags: {String.Join(", ", Tags)}");
+            }
+
+            return res.Remove(0, 1).ToString();
         }
 
         public override string ToString()
         {
-            return DisplayText;
+            return Text;
         }
 
         public bool CustomEquals(Memory m)

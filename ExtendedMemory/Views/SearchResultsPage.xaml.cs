@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using ExtendedMemory.DataAccess;
@@ -24,20 +23,7 @@ namespace ExtendedMemory.Views
 
             Memories.ItemTapped += (sender, e) =>
             {
-                for (var i = 0; i < ListViewItems.Count; i++)
-                {
-                    var item = ListViewItems.ElementAt(i);
-                    if (item.CustomEquals((Memory)e.Item))
-                    {
-                        var itemClone = item;
-                        ListViewItems.Remove(item);
-                        itemClone.ShowHideDetails();
-                        ListViewItems.Insert(i, itemClone);
-                        break;
-                    }
-                }
-
-                BindingContext = this;
+                Device.BeginInvokeOnMainThread(() => DisplayAlert(((Memory)e.Item).Text, ((Memory)e.Item).MemoryDetails(), "OK"));
             };
 
             var searchResult = new MemoryDatabase().Get(searchParams);
@@ -55,10 +41,7 @@ namespace ExtendedMemory.Views
 
         void BackToSearch(object sender, EventArgs args)
         {
-            Application.Current.MainPage = new HomePage()
-            {
-                CurrentPage = new SearchPage()
-            };
+            Application.Current.MainPage = new HomePage();
         }
     }
 }

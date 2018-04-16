@@ -135,7 +135,6 @@ namespace ExtendedMemory.DataAccess
                     continue;
                 }
 
-                memoryRecord.DisplayText = memoryRecord.Text;
                 memories.Add(memoryRecord);
             }
 

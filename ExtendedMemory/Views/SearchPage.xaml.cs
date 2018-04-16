@@ -64,7 +64,7 @@ namespace ExtendedMemory.Views
                 {
                     Memory = !String.IsNullOrWhiteSpace(txtSearchByMemory.Text) ? txtSearchByMemory.Text.Split(' ').ToList() : null,
                     People = !String.IsNullOrWhiteSpace(txtSearchByPeople.Text) ? txtSearchByPeople.Text.Split(' ').ToList() : null,
-                    Tags = !String.IsNullOrWhiteSpace(txtSearchByTag.Text) ? txtSearchByPeople.Text.Split(' ').ToList() : null,
+                    Tags = !String.IsNullOrWhiteSpace(txtSearchByTag.Text) ? txtSearchByTag.Text.Split(' ').ToList() : null,
                     Location = new Location()
                     {
                         City = ddSearchByCity.SelectedIndex != -1 ? ddSearchByCity.Items[ddSearchByCity.SelectedIndex]: "",
