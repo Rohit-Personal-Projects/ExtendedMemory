@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using System.Linq;
 using ExtendedMemory.DataAccess;
 using ExtendedMemory.Models;
 using Xamarin.Forms;
@@ -7,6 +9,8 @@ namespace ExtendedMemory.Views
 {
     public partial class SearchResultsPage : ContentPage
     {
+        public ObservableCollection<Memory> ListViewItems { get; set; } = new ObservableCollection<Memory>();
+
         public SearchResultsPage()
         {
             InitializeComponent();
@@ -15,27 +19,29 @@ namespace ExtendedMemory.Views
         public SearchResultsPage(SearchParams searchParams)
         {
             InitializeComponent();
-
             stackResult.Padding = new Thickness(20, 10);
 
-            var searchResult = new MemoryDatabase().Get(searchParams);
-            if (searchResult.IsSuccess)
+            Memories.ItemTapped += (sender, e) =>
             {
-                Memory.ItemsSource = searchResult.Item;
-                Device.BeginInvokeOnMainThread(() => DisplayAlert("Success", searchResult.Item.Count + " results found", "OK"));
+                Device.BeginInvokeOnMainThread(() => DisplayAlert(((Memory)e.Item).Text, ((Memory)e.Item).MemoryDetails(), "OK"));
+            };
+
+            var searchResult = new MemoryDatabase().Get(searchParams);
+            if (searchResult.IsSuccess && searchResult.Item != null && searchResult.Item.Any())
+            {
+                ListViewItems = searchResult.Item;
+                BindingContext = this;
+                headerSearchResults.Text = $"{searchResult.Item.Count} Memories";
             }
             else
             {
-                Device.BeginInvokeOnMainThread(() => DisplayAlert("Failure", "Something went wrong", "OK"));
+                headerSearchResults.Text = $"No Memories matching this search criterion.";
             }
         }
 
         void BackToSearch(object sender, EventArgs args)
         {
-            Application.Current.MainPage = new HomePage()
-            {
-                CurrentPage = new SearchPage()
-            };
+            Application.Current.MainPage = new HomePage();
         }
     }
 }

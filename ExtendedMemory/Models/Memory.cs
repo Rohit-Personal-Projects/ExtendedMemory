@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Couchbase.Lite;
 using Newtonsoft.Json;
 
@@ -62,11 +64,47 @@ namespace ExtendedMemory.Models
             return result;
         }
 
+        /// <summary>
+        /// Entire memory object converted to a string; used for display on the search results page.
+        /// </summary>
+        public string MemoryDetails()
+        {
+            var res = new StringBuilder();
+
+            if (People != null && People.Any())
+            {
+                res.Append($"\nWith {String.Join(", ", People)}");
+            }
+            if (Location != null)
+            {
+                var loc = Location.ToString();
+                if (!string.IsNullOrWhiteSpace(loc))
+                {
+                    res.Append($"\nIn {loc}");
+                }
+            }
+            res.Append($"\nOn {DateTime.Date.ToShortDateString()} at {DateTime.ToString("hh:mm tt")}");
+            if (Tags != null && Tags.Any())
+            {
+                res.Append($"\nTags: {String.Join(", ", Tags)}");
+            }
+
+            return res.Remove(0, 1).ToString();
+        }
+
         public override string ToString()
         {
-            return string.Format(
-                "[Memory: ID={0}, Text={1}, Date={2}, City={3}, State={4}, Country={5}, People=[{6}], Tags=[{7}]]", 
-                ID, Text, DateTime, Location?.City, Location?.State, Location?.Country, String.Join(", ", People), String.Join(", ", Tags));
+            return Text;
+        }
+
+        public bool CustomEquals(Memory m)
+        {
+            return this.Text == m.Text &&
+                       this.ID == m.ID &&
+                       this.DateTime == m.DateTime &&
+                       this.Location == m.Location &&
+                       this.People == m.People &&
+                       this.Tags == m.Tags;
         }
     }
 }

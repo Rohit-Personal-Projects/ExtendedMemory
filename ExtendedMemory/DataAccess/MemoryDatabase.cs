@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace ExtendedMemory.DataAccess
 
         Response<string> Forget(Memory memory);
 
-        Response<List<Memory>> Get(SearchParams searchParams);
+        Response<ObservableCollection<Memory>> Get(SearchParams searchParams);
     }
 
     public class MemoryDatabase : IMemoryDatabase
@@ -72,9 +73,9 @@ namespace ExtendedMemory.DataAccess
             throw new NotImplementedException();
         }
 
-        public Response<List<Memory>> Get(SearchParams searchParams)
+        public Response<ObservableCollection<Memory>> Get(SearchParams searchParams)
         {
-            var memories = new List<Memory>();
+            var memories = new ObservableCollection<Memory>();
             var memoriesFromDB = database.CreateAllDocumentsQuery();
             var rows = memoriesFromDB.Run();
 
@@ -137,7 +138,7 @@ namespace ExtendedMemory.DataAccess
                 memories.Add(memoryRecord);
             }
 
-            return new Response<List<Memory>>
+            return new Response<ObservableCollection<Memory>>
             {
                 IsSuccess = true,
                 Item = memories

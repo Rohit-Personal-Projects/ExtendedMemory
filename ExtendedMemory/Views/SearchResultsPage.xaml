@@ -12,16 +12,12 @@
                 Text="Back"
                 Clicked="BackToSearch" />
 
-            <Label Text="Search Results"
-               HorizontalTextAlignment="Center" VerticalOptions="Start" />
-        
-            <ListView x:Name="Memory">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell Text="{Binding Text}"/>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <Label x:Name="headerSearchResults"
+                Text="Search Results"
+                HorizontalTextAlignment="Center" VerticalOptions="Start" />
+
+            <ListView x:Name="Memories"
+                ItemsSource="{Binding ListViewItems}" />
             
         </StackLayout>
     </ContentPage.Content>
