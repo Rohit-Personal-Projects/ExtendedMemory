@@ -36,5 +36,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <Import Project="..\ExtendedMemory\ExtendedMemory.projitems" Label="Shared" Condition="Exists('..\ExtendedMemory\ExtendedMemory.projitems')" />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
